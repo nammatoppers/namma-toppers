@@ -1,1 +1,0 @@
-Place your PDF/DOCX resource files inside organised class/subject folders, then update data/resources.js.
