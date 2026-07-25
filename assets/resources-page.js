@@ -9,6 +9,83 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   const data = window.NAMMA_TOPPERS_RESOURCES;
+  const socials = window.NAMMA_TOPPERS_SOCIALS;
+
+  function renderSocialLinks() {
+    if (!socials) return;
+
+    const headerSocialsEl = document.getElementById('header-socials');
+    if (headerSocialsEl) {
+      headerSocialsEl.innerHTML = '';
+
+      const iconMap = {
+        instagram: {
+          label: 'Instagram',
+          svg: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>`
+        },
+        youtube: {
+          label: 'YouTube',
+          svg: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>`
+        },
+        whatsapp: {
+          label: 'WhatsApp',
+          svg: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>`
+        }
+      };
+
+      ['instagram', 'youtube', 'whatsapp'].forEach((key) => {
+        const url = socials[key];
+        if (url && typeof url === 'string' && url.trim() !== '') {
+          const a = document.createElement('a');
+          a.href = url.trim();
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          a.className = 'social-icon-btn';
+          a.setAttribute('aria-label', `Visit Namma Toppers on ${iconMap[key].label}`);
+          a.innerHTML = iconMap[key].svg;
+          headerSocialsEl.appendChild(a);
+        }
+      });
+
+      if (socials.telegram && typeof socials.telegram === 'string' && socials.telegram.trim() !== '') {
+        const tgBtn = document.createElement('a');
+        tgBtn.href = socials.telegram.trim();
+        tgBtn.target = '_blank';
+        tgBtn.rel = 'noopener noreferrer';
+        tgBtn.className = 'nav-cta';
+        tgBtn.setAttribute('aria-label', 'Join Telegram Channel');
+        tgBtn.textContent = 'Join Telegram';
+        headerSocialsEl.appendChild(tgBtn);
+      }
+    }
+
+    const footerSocialsEl = document.getElementById('footer-social-links');
+    if (footerSocialsEl) {
+      footerSocialsEl.innerHTML = '';
+      const footerMap = [
+        { key: 'instagram', label: 'Instagram' },
+        { key: 'youtube', label: 'YouTube' },
+        { key: 'telegram', label: 'Telegram' },
+        { key: 'whatsapp', label: 'WhatsApp' }
+      ];
+
+      footerMap.forEach((item) => {
+        const url = socials[item.key];
+        if (url && typeof url === 'string' && url.trim() !== '') {
+          const a = document.createElement('a');
+          a.href = url.trim();
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          a.setAttribute('aria-label', `Follow Namma Toppers on ${item.label}`);
+          a.textContent = item.label;
+          footerSocialsEl.appendChild(a);
+        }
+      });
+    }
+  }
+
+  renderSocialLinks();
+
   if (!data) return;
 
   // DOM Elements

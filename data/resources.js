@@ -1,11 +1,13 @@
 /**
- * Namma Toppers - Centralized Resource Data Store
- * Supports 4 Main Sections:
- * 1. Bilingual Resources (Classes 1–5)
- * 2. Kannada Medium (Classes 1–9)
- * 3. English Medium (Classes 1–9)
- * 4. SSLC Zone (Class 10 Board Resources - Kannada & English Medium)
+ * Namma Toppers - Centralized Resource & Socials Data Store
  */
+
+window.NAMMA_TOPPERS_SOCIALS = {
+  instagram: "https://www.instagram.com/nammatoppers/?hl=en",
+  youtube: "https://www.youtube.com/channel/UCP9PEs2L57E9FH17pQrsmVQ",
+  whatsapp: "",
+  telegram: "https://t.me/+SdyXuYvxviU1YTE1"
+};
 
 const defaultPrimarySubjects = {
   kannada: { name: "Kannada", code: "KAN", questionPaper: "", answerKey: "" },

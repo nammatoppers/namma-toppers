@@ -34,7 +34,11 @@
         <a href="#kannada-medium">Kannada Medium</a>
         <a href="#english-medium">English Medium</a>
         <a href="#sslc-zone">SSLC Zone</a>
-        <a class="nav-cta" href="https://t.me/+SdyXuYvxviU1YTE1" target="_blank" rel="noopener noreferrer">Join Telegram</a>
+        
+        <!-- Compact Social Icons + Telegram CTA Container -->
+        <div class="header-socials" id="header-socials">
+          <!-- Dynamically populated via window.NAMMA_TOPPERS_SOCIALS -->
+        </div>
       </nav>
     </div>
   </header>
@@ -50,7 +54,7 @@
           
           <div class="hero-actions fade-item">
             <a class="btn primary" href="#sslc-zone">SSLC Board Zone</a>
-            <a class="btn secondary" href="https://t.me/+SdyXuYvxviU1YTE1" target="_blank" rel="noopener noreferrer">Join Telegram</a>
+            <a class="btn secondary" id="hero-telegram-btn" href="https://t.me/+SdyXuYvxviU1YTE1" target="_blank" rel="noopener noreferrer">Join Telegram</a>
           </div>
 
           <div class="trust-row fade-item">
@@ -222,25 +226,21 @@
           </div>
 
           <div class="control-panel-box">
-            <!-- 1. SSLC Medium Selector -->
             <div class="control-step">
               <div class="tab-instruction-label">1. MEDIUM</div>
               <div id="sslc-medium-tabs" class="segmented-control" role="tablist"></div>
             </div>
 
-            <!-- 2. SSLC Resource Selector -->
             <div class="control-step">
               <div class="tab-instruction-label">2. RESOURCE TYPE</div>
               <div id="sslc-resource-tabs" class="segmented-control" role="tablist"></div>
             </div>
 
-            <!-- 3. Board Preparation Category Selector (Visible when Board Preparation selected) -->
             <div class="control-step unit-selector-wrapper" id="sslc-board-prep-wrapper" style="display: none;">
               <div class="tab-instruction-label">3. BOARD PREPARATION CATEGORY</div>
               <div id="sslc-board-prep-tabs" class="unit-tabs-row" role="tablist"></div>
             </div>
 
-            <!-- 4. Result Action Box -->
             <div class="selected-class-box" id="sslc-action-box">
               <div class="selected-class-label" id="sslc-context-label">SSLC Class 10 Board</div>
               <div class="selected-class-title">
@@ -273,7 +273,14 @@
         <a href="#kannada-medium">Kannada Medium</a>
         <a href="#english-medium">English Medium</a>
         <a href="#sslc-zone">SSLC Zone</a>
-        <a href="https://t.me/+SdyXuYvxviU1YTE1" target="_blank" rel="noopener noreferrer">Telegram</a>
+      </div>
+
+      <!-- Follow Namma Toppers Social Section -->
+      <div class="footer-social-section">
+        <div class="footer-social-heading">Follow Namma Toppers</div>
+        <div class="footer-links" id="footer-social-links">
+          <!-- Dynamically populated via window.NAMMA_TOPPERS_SOCIALS -->
+        </div>
       </div>
       
       <div class="copyright">© <span id="year">2026</span> Namma Toppers. All rights reserved.</div>
