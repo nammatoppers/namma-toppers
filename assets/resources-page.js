@@ -542,14 +542,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Update Breadcrumbs & Titles
   function updateBreadcrumbs() {
+    let seoTitle = "";
+    let seoDesc = "";
+
     if (isSSLC) {
       const medStr = sslcMedium === 'kannada' ? 'Kannada Medium' : 'English Medium';
       let resStr = sslcResource.toUpperCase();
+
       if (sslcResource === 'board-prep') {
         const catClean = sslcCategory.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
         resStr = `Board Prep › ${catClean}`;
+        seoTitle = `Karnataka SSLC ${medStr} Class 10 ${catClean} | Namma Toppers`;
+        seoDesc = `Download Karnataka SSLC Class 10 ${medStr} ${catClean} resources from Namma Toppers.`;
       } else if (sslcResource === 'notes') {
         resStr = 'Notes';
+        seoTitle = `Karnataka SSLC ${medStr} Class 10 Notes | Namma Toppers`;
+        seoDesc = `Download Karnataka SSLC Class 10 ${medStr} Notes from Namma Toppers.`;
+      } else {
+        const typeStr = currentType === 'answer-key' ? 'Answer Keys' : 'Question Papers';
+        seoTitle = `Karnataka SSLC ${medStr} Class 10 ${resStr} ${typeStr} | Namma Toppers`;
+        seoDesc = `Download Karnataka SSLC Class 10 ${medStr} ${resStr} ${typeStr} from Namma Toppers.`;
       }
 
       const typeStr = (sslcResource === 'notes' || sslcResource === 'board-prep') ? '' : (currentType === 'answer-key' ? 'Answer Key' : 'Question Paper');
@@ -563,31 +575,50 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
     } else {
-      let secTitle = 'Bilingual Resources';
+      let secTitle = 'Bilingual';
       if (section === 'kannada-medium') secTitle = 'Kannada Medium';
       if (section === 'english-medium') secTitle = 'English Medium';
 
       const classStr = `Class ${currentClassId}`;
       let assessStr = assessment.toUpperCase();
       if (assessment === 'unit-test') {
-        assessStr = `Unit Test › Unit ${unit}`;
+        assessStr = `Unit Test Unit ${unit}`;
       } else if (assessment === 'notes') {
         assessStr = 'Notes';
       }
 
-      const typeStr = assessment === 'notes' ? '' : (currentType === 'answer-key' ? 'Answer Key' : 'Question Paper');
+      const typeStr = assessment === 'notes' ? '' : (currentType === 'answer-key' ? 'Answer Keys' : 'Question Papers');
+
+      if (typeStr) {
+        seoTitle = `Karnataka ${secTitle} ${classStr} ${assessStr} ${typeStr} | Namma Toppers`;
+        seoDesc = `Download Karnataka State Board ${secTitle} ${classStr} ${assessStr} ${typeStr} from Namma Toppers.`;
+      } else {
+        seoTitle = `Karnataka ${secTitle} ${classStr} ${assessStr} | Namma Toppers`;
+        seoDesc = `Download Karnataka State Board ${secTitle} ${classStr} ${assessStr} from Namma Toppers.`;
+      }
 
       if (breadcrumbsEl) {
-        if (typeStr) {
-          breadcrumbsEl.innerHTML = `${secTitle} &rsaquo; ${classStr} &rsaquo; ${assessStr} &rsaquo; <strong>${typeStr}</strong>`;
+        const typeLabel = currentType === 'answer-key' ? 'Answer Key' : 'Question Paper';
+        const displayAssess = assessment === 'unit-test' ? `Unit Test &rsaquo; Unit ${unit}` : (assessment === 'notes' ? 'Notes' : assessment.toUpperCase());
+        if (assessment === 'notes') {
+          breadcrumbsEl.innerHTML = `${secTitle} Resources &rsaquo; ${classStr} &rsaquo; <strong>${displayAssess}</strong>`;
         } else {
-          breadcrumbsEl.innerHTML = `${secTitle} &rsaquo; ${classStr} &rsaquo; <strong>${assessStr}</strong>`;
+          breadcrumbsEl.innerHTML = `${secTitle} Resources &rsaquo; ${classStr} &rsaquo; ${displayAssess} &rsaquo; <strong>${typeLabel}</strong>`;
         }
       }
 
       if (pageTitleEl) {
-        pageTitleEl.textContent = `${classStr} ${assessStr} ${typeStr}`.trim();
+        const typeLabel = currentType === 'answer-key' ? 'Answer Key' : 'Question Paper';
+        const displayAssess = assessment === 'unit-test' ? `Unit Test Unit ${unit}` : (assessment === 'notes' ? 'Notes' : assessment.toUpperCase());
+        pageTitleEl.textContent = `${classStr} ${displayAssess} ${assessment === 'notes' ? '' : typeLabel}`.trim();
       }
+    }
+
+    if (seoTitle) document.title = seoTitle;
+
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc && seoDesc) {
+      metaDesc.setAttribute('content', seoDesc);
     }
   }
 
