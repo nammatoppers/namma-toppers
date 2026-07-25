@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Namma Toppers — Study Smart. Score Big. Question Papers, Answer Keys, Notes & SSLC Class 10 Board Resources (Bilingual, Kannada Medium, English Medium).">
+  <title>Namma Toppers — Study Smart. Score Big.</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="icon" type="image/png" href="assets/namma-toppers-logo.png">
+</head>
+<body>
+
+  <!-- BRAND HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Namma Toppers Homepage">
+        <img src="assets/namma-toppers-logo.png" alt="Namma Toppers Logo">
+        <div>
+          <strong>Namma Toppers</strong>
+          <span>Study Smart. Score Big.</span>
+        </div>
+      </a>
+
+      <button class="menu-btn" id="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+
+      <nav class="nav" id="main-nav" aria-label="Main navigation">
+        <a class="active" href="index.html">Home</a>
+        <a href="#bilingual-resources">Bilingual</a>
+        <a href="#kannada-medium">Kannada Medium</a>
+        <a href="#english-medium">English Medium</a>
+        <a href="#sslc-zone">SSLC Zone</a>
+        <a class="nav-cta" href="https://t.me/+SdyXuYvxviU1YTE1" target="_blank" rel="noopener noreferrer">Join Telegram</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero animate-hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow fade-item">ASSESSMENTS • NOTES • REVISION</div>
+          <h1 class="fade-item">Study Smart.<br><span>Score Big.</span></h1>
+          <p class="fade-item">Clear, useful academic resources for Karnataka school students and teachers.</p>
+          
+          <div class="hero-actions fade-item">
+            <a class="btn primary" href="#sslc-zone">SSLC Board Zone</a>
+            <a class="btn secondary" href="https://t.me/+SdyXuYvxviU1YTE1" target="_blank" rel="noopener noreferrer">Join Telegram</a>
+          </div>
+
+          <div class="trust-row fade-item">
+            <span>✓ Question Papers</span>
+            <span>✓ Answer Keys</span>
+            <span>✓ SSLC Class 10 Board</span>
+          </div>
+        </div>
+
+        <!-- HERO ILLUSTRATION CARD -->
+        <div class="hero-card fade-item">
+          <div class="orb orb-a"></div>
+          <div class="orb orb-b"></div>
+          <div class="hero-logo">
+            <img src="assets/namma-toppers-logo.png" alt="Namma Toppers Circle Logo">
+          </div>
+          <div class="mini-card card-one">
+            <span class="mini-icon">🌐</span>
+            <div><small>Section 1</small><strong>Bilingual (Class 1–5)</strong></div>
+          </div>
+          <div class="mini-card card-two">
+            <span class="mini-icon">📝</span>
+            <div><small>Section 2 &amp; 3</small><strong>Kannada &amp; English Medium</strong></div>
+          </div>
+          <div class="mini-card card-three">
+            <span class="mini-icon">🎓</span>
+            <div><small>Section 4</small><strong>SSLC Zone (Class 10)</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: BILINGUAL RESOURCES (CLASSES 1–5) -->
+    <section class="section scroll-reveal" id="bilingual-resources">
+      <div class="container">
+        <div class="fa1-resource-card">
+          <div class="resource-header-row">
+            <div>
+              <span class="section-kicker">SECTION 1</span>
+              <h2>Bilingual Resources</h2>
+            </div>
+            <span class="medium-pill">Classes 1–5</span>
+          </div>
+
+          <div class="control-panel-box">
+            <div class="control-step">
+              <div class="tab-instruction-label">1. CLASS</div>
+              <div id="bilingual-class-tabs" class="class-tabs-row" role="tablist"></div>
+            </div>
+
+            <div class="control-step">
+              <div class="tab-instruction-label">2. RESOURCE / ASSESSMENT</div>
+              <div id="bilingual-assessment-tabs" class="segmented-control" role="tablist"></div>
+            </div>
+
+            <div class="control-step unit-selector-wrapper" id="bilingual-unit-wrapper" style="display: none;">
+              <div class="tab-instruction-label">3. UNIT</div>
+              <div id="bilingual-unit-tabs" class="unit-tabs-row" role="tablist"></div>
+            </div>
+
+            <div class="selected-class-box" id="bilingual-action-box">
+              <div class="selected-class-label" id="bilingual-context-label">Bilingual Resources</div>
+              <div class="selected-class-title">
+                <span id="bilingual-selected-class-title">Class 1</span>
+                <span class="fa-tag" id="bilingual-selected-assessment-tag">FA-1</span>
+              </div>
+              <div id="bilingual-buttons-container" class="two-buttons-grid"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: KANNADA MEDIUM (CLASSES 1–9) -->
+    <section class="section soft-section scroll-reveal" id="kannada-medium">
+      <div class="container">
+        <div class="fa1-resource-card kannada-card">
+          <div class="resource-header-row">
+            <div>
+              <span class="section-kicker">SECTION 2</span>
+              <h2>Kannada Medium</h2>
+            </div>
+            <span class="medium-pill kannada-pill">Classes 1–9</span>
+          </div>
+
+          <div class="control-panel-box">
+            <div class="control-step">
+              <div class="tab-instruction-label">1. CLASS</div>
+              <div id="kannada-class-tabs" class="class-tabs-row" role="tablist"></div>
+            </div>
+
+            <div class="control-step">
+              <div class="tab-instruction-label">2. RESOURCE / ASSESSMENT</div>
+              <div id="kannada-assessment-tabs" class="segmented-control" role="tablist"></div>
+            </div>
+
+            <div class="control-step unit-selector-wrapper" id="kannada-unit-wrapper" style="display: none;">
+              <div class="tab-instruction-label">3. UNIT</div>
+              <div id="kannada-unit-tabs" class="unit-tabs-row" role="tablist"></div>
+            </div>
+
+            <div class="selected-class-box" id="kannada-action-box">
+              <div class="selected-class-label" id="kannada-context-label">Kannada Medium</div>
+              <div class="selected-class-title">
+                <span id="kannada-selected-class-title">Class 1</span>
+                <span class="fa-tag" id="kannada-selected-assessment-tag">FA-1</span>
+              </div>
+              <div id="kannada-buttons-container" class="two-buttons-grid"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: ENGLISH MEDIUM (CLASSES 1–9) -->
+    <section class="section scroll-reveal" id="english-medium">
+      <div class="container">
+        <div class="fa1-resource-card english-card">
+          <div class="resource-header-row">
+            <div>
+              <span class="section-kicker">SECTION 3</span>
+              <h2>English Medium</h2>
+            </div>
+            <span class="medium-pill">Classes 1–9</span>
+          </div>
+
+          <div class="control-panel-box">
+            <div class="control-step">
+              <div class="tab-instruction-label">1. CLASS</div>
+              <div id="english-class-tabs" class="class-tabs-row" role="tablist"></div>
+            </div>
+
+            <div class="control-step">
+              <div class="tab-instruction-label">2. RESOURCE / ASSESSMENT</div>
+              <div id="english-assessment-tabs" class="segmented-control" role="tablist"></div>
+            </div>
+
+            <div class="control-step unit-selector-wrapper" id="english-unit-wrapper" style="display: none;">
+              <div class="tab-instruction-label">3. UNIT</div>
+              <div id="english-unit-tabs" class="unit-tabs-row" role="tablist"></div>
+            </div>
+
+            <div class="selected-class-box" id="english-action-box">
+              <div class="selected-class-label" id="english-context-label">English Medium</div>
+              <div class="selected-class-title">
+                <span id="english-selected-class-title">Class 1</span>
+                <span class="fa-tag" id="english-selected-assessment-tag">FA-1</span>
+              </div>
+              <div id="english-buttons-container" class="two-buttons-grid"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: SSLC ZONE (CLASS 10 BOARD RESOURCES) -->
+    <section class="section soft-section scroll-reveal" id="sslc-zone">
+      <div class="container">
+        <div class="fa1-resource-card sslc-card">
+          <div class="resource-header-row">
+            <div>
+              <span class="section-kicker">SECTION 4 • BOARD EXAM ZONE</span>
+              <h2>SSLC Zone</h2>
+            </div>
+            <span class="medium-pill sslc-pill">Class 10 Board</span>
+          </div>
+
+          <div class="control-panel-box">
+            <!-- 1. SSLC Medium Selector -->
+            <div class="control-step">
+              <div class="tab-instruction-label">1. MEDIUM</div>
+              <div id="sslc-medium-tabs" class="segmented-control" role="tablist"></div>
+            </div>
+
+            <!-- 2. SSLC Resource Selector -->
+            <div class="control-step">
+              <div class="tab-instruction-label">2. RESOURCE TYPE</div>
+              <div id="sslc-resource-tabs" class="segmented-control" role="tablist"></div>
+            </div>
+
+            <!-- 3. Board Preparation Category Selector (Visible when Board Preparation selected) -->
+            <div class="control-step unit-selector-wrapper" id="sslc-board-prep-wrapper" style="display: none;">
+              <div class="tab-instruction-label">3. BOARD PREPARATION CATEGORY</div>
+              <div id="sslc-board-prep-tabs" class="unit-tabs-row" role="tablist"></div>
+            </div>
+
+            <!-- 4. Result Action Box -->
+            <div class="selected-class-box" id="sslc-action-box">
+              <div class="selected-class-label" id="sslc-context-label">SSLC Class 10 Board</div>
+              <div class="selected-class-title">
+                <span id="sslc-selected-medium-title">Kannada Medium</span>
+                <span class="fa-tag" id="sslc-selected-resource-tag">FA-1</span>
+              </div>
+              <div id="sslc-buttons-container" class="two-buttons-grid"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- BRAND FOOTER -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="assets/namma-toppers-logo.png" alt="Namma Toppers Logo">
+        <div>
+          <strong>Namma Toppers</strong>
+          <span>Study Smart. Score Big.</span>
+        </div>
+      </div>
+      
+      <div class="footer-links">
+        <a href="#bilingual-resources">Bilingual</a>
+        <a href="#kannada-medium">Kannada Medium</a>
+        <a href="#english-medium">English Medium</a>
+        <a href="#sslc-zone">SSLC Zone</a>
+        <a href="https://t.me/+SdyXuYvxviU1YTE1" target="_blank" rel="noopener noreferrer">Telegram</a>
+      </div>
+      
+      <div class="copyright">© <span id="year">2026</span> Namma Toppers. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="data/resources.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

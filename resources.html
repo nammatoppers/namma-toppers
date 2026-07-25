@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Download Class 1 to 9 Question Papers, Answer Keys & Notes for Bilingual, Kannada Medium & English Medium. Study Smart. Score Big.">
+  <title>Resources — Namma Toppers</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="icon" type="image/png" href="assets/namma-toppers-logo.png">
+</head>
+<body>
+
+  <!-- HEADER NAVBAR -->
+  <header class="site-header" id="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Namma Toppers Homepage">
+        <img src="assets/namma-toppers-logo.png" alt="Namma Toppers Logo">
+        <div>
+          <strong>Namma Toppers</strong>
+          <span>Study Smart. Score Big.</span>
+        </div>
+      </a>
+
+      <button class="menu-btn" id="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+
+      <nav class="nav" id="main-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="index.html#bilingual-resources">Bilingual</a>
+        <a href="index.html#kannada-medium">Kannada Medium</a>
+        <a href="index.html#english-medium">English Medium</a>
+        <a class="nav-cta" href="https://t.me/+SdyXuYvxviU1YTE1" target="_blank" rel="noopener noreferrer">Join Telegram</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN WRAPPER -->
+  <main class="section" style="padding-top: 40px; min-height: 80vh;">
+    <div class="container">
+      
+      <!-- BREADCRUMBS & CONTEXT HEADER -->
+      <div class="page-title-block">
+        <nav class="breadcrumbs" id="breadcrumbs-display" aria-label="Breadcrumb Context">
+          Bilingual Resources &rsaquo; Class 1 &rsaquo; FA-1 &rsaquo; Question Paper
+        </nav>
+        <h1 class="page-title" id="page-title-display">Class 1 FA-1 Question Paper</h1>
+        <p class="page-subtitle">Select class, assessment and resource type to open subject PDFs.</p>
+      </div>
+
+      <!-- STEPPED CONTROL PANEL -->
+      <div class="control-bar">
+        
+        <!-- Class Selector -->
+        <div class="control-group">
+          <label class="control-label">Class</label>
+          <div id="class-selector-row" class="class-selector-row">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Assessment / Resource Selector -->
+        <div class="control-group">
+          <label class="control-label">Resource / Assessment</label>
+          <div id="assessment-selector-row" class="type-selector-row">
+            <!-- Dynamically populated: FA-1 | FA-2 | SA-1 | SA-2 | Unit Tests | Notes -->
+          </div>
+        </div>
+
+        <!-- Unit Selector (Visible when Unit Tests active) -->
+        <div class="control-group" id="unit-control-group" style="display: none;">
+          <label class="control-label">Unit</label>
+          <div id="unit-selector-row" class="class-selector-row">
+            <!-- Dynamically populated: Unit 1 | Unit 2 ... -->
+          </div>
+        </div>
+
+        <!-- Resource Type Selector (Hidden when Notes active) -->
+        <div class="control-group" id="type-control-group">
+          <label class="control-label">Resource Type</label>
+          <div id="type-selector-row" class="type-selector-row">
+            <!-- Dynamically populated: Question Paper | Answer Key -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SUBJECTS LIST CONTAINER -->
+      <div id="subjects-container" class="subjects-container">
+        <!-- Dynamically populated subject rows -->
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="assets/namma-toppers-logo.png" alt="Namma Toppers Logo">
+        <div>
+          <strong>Namma Toppers</strong>
+          <span>Study Smart. Score Big.</span>
+        </div>
+      </div>
+      
+      <div class="footer-links">
+        <a href="index.html#bilingual-resources">Bilingual</a>
+        <a href="index.html#kannada-medium">Kannada Medium</a>
+        <a href="index.html#english-medium">English Medium</a>
+        <a href="https://t.me/+SdyXuYvxviU1YTE1" target="_blank" rel="noopener noreferrer">Telegram</a>
+      </div>
+      
+      <div class="copyright">© <span id="year">2026</span> Namma Toppers. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="data/resources.js"></script>
+  <script src="assets/resources-page.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      const menuToggle = document.getElementById('menu-toggle');
+      const mainNav = document.getElementById('main-nav');
+      if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', () => {
+          const isOpen = mainNav.classList.toggle('open');
+          menuToggle.setAttribute('aria-expanded', isOpen);
+          menuToggle.textContent = isOpen ? '✕' : '☰';
+        });
+      }
+
+      const header = document.getElementById('site-header');
+      if (header) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 20) {
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+          }
+        }, { passive: true });
+      }
+    });
+  </script>
+</body>
+</html>
