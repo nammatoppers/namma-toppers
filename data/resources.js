@@ -5,7 +5,7 @@
 window.NAMMA_TOPPERS_SOCIALS = {
   instagram: "https://www.instagram.com/nammatoppers/?hl=en",
   youtube: "https://www.youtube.com/channel/UCP9PEs2L57E9FH17pQrsmVQ",
-  whatsapp: "",
+  whatsapp: "https://whatsapp.com/channel/0029VbDWNuQ72WTnxq19Qu02",
   telegram: "https://t.me/+SdyXuYvxviU1YTE1"
 };
 
