@@ -1,16 +1,24 @@
 /**
  * Namma Toppers - Resource Page Logic (resources-page.js)
- * Supports 4 Top-Level Sections:
- * 1. Bilingual Resources (Classes 1–5)
- * 2. Kannada Medium (Classes 1–9)
- * 3. English Medium (Classes 1–9)
- * 4. SSLC Zone (Class 10 Board Resources)
+ * Supports 4 Top-Level Sections with GA4 Event Tracking:
+ * - resource_open
+ * - class_select
+ * - assessment_select
+ * - social_click
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   const data = window.NAMMA_TOPPERS_RESOURCES;
   const socials = window.NAMMA_TOPPERS_SOCIALS;
 
+  // Helper GA4 tracking function
+  function trackGAEvent(eventName, params = {}) {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', eventName, params);
+    }
+  }
+
+  // Render Social Links & Track Clicks
   function renderSocialLinks() {
     if (!socials) return;
 
@@ -43,6 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
           a.className = 'social-icon-btn';
           a.setAttribute('aria-label', `Visit Namma Toppers on ${iconMap[key].label}`);
           a.innerHTML = iconMap[key].svg;
+
+          a.addEventListener('click', () => {
+            trackGAEvent('social_click', { platform: key });
+          });
+
           headerSocialsEl.appendChild(a);
         }
       });
@@ -55,6 +68,11 @@ document.addEventListener('DOMContentLoaded', () => {
         tgBtn.className = 'nav-cta';
         tgBtn.setAttribute('aria-label', 'Join Telegram Channel');
         tgBtn.textContent = 'Join Telegram';
+
+        tgBtn.addEventListener('click', () => {
+          trackGAEvent('social_click', { platform: 'telegram' });
+        });
+
         headerSocialsEl.appendChild(tgBtn);
       }
     }
@@ -78,6 +96,11 @@ document.addEventListener('DOMContentLoaded', () => {
           a.rel = 'noopener noreferrer';
           a.setAttribute('aria-label', `Follow Namma Toppers on ${item.label}`);
           a.textContent = item.label;
+
+          a.addEventListener('click', () => {
+            trackGAEvent('social_click', { platform: item.key });
+          });
+
           footerSocialsEl.appendChild(a);
         }
       });
@@ -109,7 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let sslcResource = (urlParams.get('resource') || 'fa1').toLowerCase();
   let sslcCategory = (urlParams.get('category') || 'previous-year-papers').toLowerCase();
 
-  // Map kebab-case category to camelCase key
   const categoryMap = {
     'previous-year-papers': 'previousYearPapers',
     'model-question-papers': 'modelQuestionPapers',
@@ -158,7 +180,6 @@ document.addEventListener('DOMContentLoaded', () => {
     currentType = 'question-paper';
   }
 
-  // Update URL parameters
   function updateUrlParams() {
     const newUrl = new URL(window.location.href);
     newUrl.searchParams.set('section', section);
@@ -203,7 +224,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.history.replaceState({}, '', newUrl);
   }
 
-  // Popstate event
   window.addEventListener('popstate', () => {
     const freshParams = new URLSearchParams(window.location.search);
     section = (freshParams.get('section') || 'bilingual').toLowerCase();
@@ -236,7 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateUI();
   });
 
-  // Render Class or SSLC Medium Selector
+  // Render Class Selector Tabs
   function renderClassSelector() {
     if (!classSelectorContainer) return;
     classSelectorContainer.innerHTML = '';
@@ -267,6 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', () => {
           currentClassId = c;
           if (c < 6 && assessment === 'notes') assessment = 'fa1';
+          trackGAEvent('class_select', { section: sectionDataKey, class: c.toString() });
           updateUrlParams();
           updateUI();
         });
@@ -275,7 +296,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Render Assessment or SSLC Resource Selector
+  // Render Assessment Toggle
   function renderAssessmentSelector() {
     if (!assessmentSelectorContainer) return;
     assessmentSelectorContainer.innerHTML = '';
@@ -297,6 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.setAttribute('type', 'button');
         btn.addEventListener('click', () => {
           sslcResource = opt.id;
+          trackGAEvent('assessment_select', { section: 'sslc', class: '10', assessment: opt.id });
           updateUrlParams();
           updateUI();
         });
@@ -322,6 +344,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.setAttribute('type', 'button');
         btn.addEventListener('click', () => {
           assessment = opt.id;
+          trackGAEvent('assessment_select', { section: sectionDataKey, class: currentClassId.toString(), assessment: opt.id });
           updateUrlParams();
           updateUI();
         });
@@ -330,7 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Render Unit or Board Prep Subcategory Selector
+  // Render Unit Selector
   function renderUnitSelector() {
     if (!unitGroupEl || !unitSelectorContainer) return;
 
@@ -401,7 +424,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Render Resource Type Toggle (Question Paper | Answer Key)
+  // Render Resource Type Toggle
   function renderTypeSelector() {
     if (!typeGroupEl || !typeSelectorContainer) return;
 
@@ -432,7 +455,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Render Subject Rows
+  // Render Subject Rows + GA4 Event Tracking on Open PDF / Open Notes
   function renderSubjects() {
     if (!subjectsContainer) return;
     subjectsContainer.innerHTML = '';
@@ -535,6 +558,22 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
         ${actionButtonHtml}
       `;
+
+      // Attach GA4 event listener on click
+      const openAnchor = card.querySelector('.btn-open-pdf');
+      if (openAnchor && pdfUrl) {
+        openAnchor.addEventListener('click', () => {
+          trackGAEvent('resource_open', {
+            medium: isSSLC ? `${sslcMedium}-medium` : section,
+            class: isSSLC ? '10' : currentClassId.toString(),
+            assessment: isSSLC ? sslcResource : assessment,
+            unit: assessment === 'unit-test' ? unit : '',
+            subject: subjKey,
+            resource_type: isNotesMode ? 'notes' : (isSSLC && sslcResource === 'board-prep' ? sslcCategory : currentType),
+            resource_url: pdfUrl.trim()
+          });
+        });
+      }
 
       subjectsContainer.appendChild(card);
     });

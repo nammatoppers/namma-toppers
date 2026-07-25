@@ -1,11 +1,18 @@
 /**
  * Namma Toppers - Homepage Interactive Logic (app.js)
- * Manages Progressive Disclosure Controls & Social Links.
+ * Manages Progressive Disclosure Controls, Social Links & GA4 Tracking.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   const data = window.NAMMA_TOPPERS_RESOURCES;
   const socials = window.NAMMA_TOPPERS_SOCIALS;
+
+  // Helper GA4 tracking function
+  function trackGAEvent(eventName, params = {}) {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', eventName, params);
+    }
+  }
 
   // 1. Dynamic Footer Year
   const yearEl = document.getElementById('year');
@@ -22,6 +29,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Track SSLC Zone nav link click
+  const sslcNavAnchors = document.querySelectorAll('a[href*="#sslc-zone"]');
+  sslcNavAnchors.forEach((anchor) => {
+    anchor.addEventListener('click', () => {
+      trackGAEvent('sslc_zone_open');
+    });
+  });
+
   // 3. Header Scroll Effect
   const header = document.getElementById('site-header');
   if (header) {
@@ -34,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
-  // 4. Render Social Links (Header & Footer)
+  // 4. Render Social Links (Header & Footer) + GA4 Event Tracking
   function renderSocialLinks() {
     if (!socials) return;
 
@@ -67,6 +82,11 @@ document.addEventListener('DOMContentLoaded', () => {
           a.className = 'social-icon-btn';
           a.setAttribute('aria-label', `Visit Namma Toppers on ${iconMap[key].label}`);
           a.innerHTML = iconMap[key].svg;
+
+          a.addEventListener('click', () => {
+            trackGAEvent('social_click', { platform: key });
+          });
+
           headerSocialsEl.appendChild(a);
         }
       });
@@ -79,10 +99,20 @@ document.addEventListener('DOMContentLoaded', () => {
         tgBtn.className = 'nav-cta';
         tgBtn.setAttribute('aria-label', 'Join Telegram Channel');
         tgBtn.textContent = 'Join Telegram';
+
+        tgBtn.addEventListener('click', () => {
+          trackGAEvent('social_click', { platform: 'telegram' });
+        });
+
         headerSocialsEl.appendChild(tgBtn);
 
         const heroTgBtn = document.getElementById('hero-telegram-btn');
-        if (heroTgBtn) heroTgBtn.href = socials.telegram.trim();
+        if (heroTgBtn) {
+          heroTgBtn.href = socials.telegram.trim();
+          heroTgBtn.addEventListener('click', () => {
+            trackGAEvent('social_click', { platform: 'telegram' });
+          });
+        }
       }
     }
 
@@ -105,6 +135,11 @@ document.addEventListener('DOMContentLoaded', () => {
           a.rel = 'noopener noreferrer';
           a.setAttribute('aria-label', `Follow Namma Toppers on ${item.label}`);
           a.textContent = item.label;
+
+          a.addEventListener('click', () => {
+            trackGAEvent('social_click', { platform: item.key });
+          });
+
           footerSocialsEl.appendChild(a);
         }
       });
@@ -182,6 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
           if (c < 6 && state.assessment === 'notes') {
             state.assessment = 'fa1';
           }
+          trackGAEvent('class_select', { section: sectionDataKey, class: c.toString() });
           updateUI();
         });
 
@@ -213,6 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         btn.addEventListener('click', () => {
           state.assessment = opt.id;
+          trackGAEvent('assessment_select', { section: sectionDataKey, class: state.classId.toString(), assessment: opt.id });
           updateUI();
         });
 
@@ -373,6 +410,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         btn.addEventListener('click', () => {
           sslcState.medium = m.id;
+          trackGAEvent('sslc_zone_open');
           updateSSLCUI();
         });
 
@@ -401,6 +439,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         btn.addEventListener('click', () => {
           sslcState.resource = r.id;
+          trackGAEvent('assessment_select', { section: 'sslc', class: '10', assessment: r.id });
           updateSSLCUI();
         });
 
