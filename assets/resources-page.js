@@ -659,6 +659,30 @@ document.addEventListener('DOMContentLoaded', () => {
     if (metaDesc && seoDesc) {
       metaDesc.setAttribute('content', seoDesc);
     }
+
+    const introEl = document.getElementById('resource-dynamic-intro');
+    if (introEl) {
+      if (isSSLC) {
+        const medStr = sslcMedium === 'kannada' ? 'Kannada Medium' : 'English Medium';
+        if (sslcResource === 'board-prep') {
+          const catClean = sslcCategory.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+          introEl.textContent = `Karnataka SSLC Class 10 ${medStr} ${catClean} board examination materials for the 2026–27 academic year. Practice with model papers, blueprints and revision guides for top results.`;
+        } else if (sslcResource === 'notes') {
+          introEl.textContent = `Karnataka SSLC Class 10 ${medStr} subject notes for the 2026–27 academic year. Simplified concepts and comprehensive study references for board exam preparation.`;
+        } else {
+          const typeStr = currentType === 'answer-key' ? 'Answer Keys' : 'Question Papers';
+          introEl.textContent = `Karnataka SSLC Class 10 ${medStr} ${sslcResource.toUpperCase()} ${typeStr} for the 2026–27 academic year. Essential resource for self-assessment and exam readiness.`;
+        }
+      } else {
+        let secTitle = 'Bilingual';
+        if (section === 'kannada-medium') secTitle = 'Kannada Medium';
+        if (section === 'english-medium') secTitle = 'English Medium';
+        const classStr = `Class ${currentClassId}`;
+        const displayAssess = assessment === 'unit-test' ? `Unit Test Unit ${unit}` : (assessment === 'notes' ? 'Notes' : assessment.toUpperCase());
+        const typeLabel = assessment === 'notes' ? '' : (currentType === 'answer-key' ? 'Answer Keys' : 'Question Papers');
+        introEl.textContent = `Karnataka State Board ${secTitle} ${classStr} ${displayAssess} ${typeLabel} for the 2026–27 academic year. Access subject-wise materials for classroom practice, revision and assessment preparation.`;
+      }
+    }
   }
 
   // Refresh UI
