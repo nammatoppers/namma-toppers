@@ -147,8 +147,22 @@ window.NAMMA_TOPPERS_RESOURCES = {
         science: { name: "Science", code: "SCI", questionPaper: "https://drive.google.com/file/d/1vQyzxNjvUjZKAPAmi0OCIgA1N3VEKzBY/view?usp=drive_link", answerKey: "https://drive.google.com/file/d/1wKytygBgQa3-tHPaJ2WJLd7dFGD6i1T9/view?usp=drive_link" },
         socialScience: { name: "Social Science", code: "SS", questionPaper: "https://drive.google.com/file/d/1BriYbTf4XAyTg3Vm8hMuNJfRWMfbBhqw/view?usp=drive_link", answerKey: "https://drive.google.com/file/d/1-M7Q-V948HvjpXBAsreLSnBM-F2dKADu/view?usp=drive_link" }
       }),
-      "7": createHigherClass("Class 7"),
-      "8": createHigherClass("Class 8"),
+      "7": createHigherClass("Class 7", {
+        kannada: { name: "Kannada", code: "KAN", questionPaper: "", answerKey: "" },
+        english: { name: "English", code: "ENG", questionPaper: "", answerKey: "" },
+        hindi: { name: "Hindi", code: "HIN", questionPaper: "", answerKey: "" },
+        mathematics: { name: "Mathematics", code: "MATH", questionPaper: "", answerKey: "" },
+        science: { name: "Science", code: "SCI", questionPaper: "", answerKey: "" },
+        socialScience: { name: "Social Science", code: "SS", questionPaper: "", answerKey: "" }
+      }),
+      "8": createHigherClass("Class 8", {
+        kannada: { name: "Kannada", code: "KAN", questionPaper: "", answerKey: "" },
+        english: { name: "English", code: "ENG", questionPaper: "", answerKey: "" },
+        hindi: { name: "Hindi", code: "HIN", questionPaper: "", answerKey: "" },
+        mathematics: { name: "Mathematics", code: "MATH", questionPaper: "", answerKey: "" },
+        science: { name: "Science", code: "SCI", questionPaper: "", answerKey: "" },
+        socialScience: { name: "Social Science", code: "SS", questionPaper: "", answerKey: "" }
+      }),
       "9": createHigherClass("Class 9")
     }
   },
