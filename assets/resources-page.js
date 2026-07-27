@@ -1,9 +1,9 @@
 /**
  * Namma Toppers - Resource Page Logic (resources-page.js)
- * Supports 4 Top-Level Sections with Transparent Resource Labels & GA4 Event Tracking:
- * - Model Question Paper / Model Answer Key
- * - Previous Question Paper / Official Model Question Paper
- * - Transparency Note & GA4 Event Tracking
+ * Clean, SEO-Friendly Wording & Transparent Resource Labels:
+ * - Dynamic intro: "Karnataka State Board Class X Medium FA-1 Model Question Papers with Answer Keys for the 2026–27 academic year."
+ * - SEO Titles: "Class X Medium FA-1 Model Question Papers & Answer Keys 2026–27 | Namma Toppers"
+ * - GA4 Event Tracking & Clean Disclaimer Placement
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -594,7 +594,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateBreadcrumbs() {
     let seoTitle = "";
     let seoDesc = "";
-    const transparencyNote = "Model resources prepared for practice and academic support. Namma Toppers is an independent educational platform and is not an official government website.";
 
     if (isSSLC) {
       const medStr = sslcMedium === 'kannada' ? 'Kannada Medium' : 'English Medium';
@@ -603,16 +602,15 @@ document.addEventListener('DOMContentLoaded', () => {
       if (sslcResource === 'board-prep') {
         const catClean = sslcCategory.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
         resStr = `Board Prep › ${catClean}`;
-        seoTitle = `Karnataka SSLC ${medStr} Class 10 ${catClean} | Namma Toppers`;
-        seoDesc = `Download Karnataka SSLC Class 10 ${medStr} ${catClean} resources from Namma Toppers.`;
+        seoTitle = `Class 10 SSLC ${medStr} ${catClean} 2026–27 | Namma Toppers`;
+        seoDesc = `Access Karnataka SSLC Class 10 ${medStr} ${catClean} resources for the 2026–27 academic year.`;
       } else if (sslcResource === 'notes') {
         resStr = 'Notes';
-        seoTitle = `Karnataka SSLC ${medStr} Class 10 Notes | Namma Toppers`;
-        seoDesc = `Download Karnataka SSLC Class 10 ${medStr} Notes from Namma Toppers.`;
+        seoTitle = `Class 10 SSLC ${medStr} Notes 2026–27 | Namma Toppers`;
+        seoDesc = `Access Karnataka SSLC Class 10 ${medStr} Notes for the 2026–27 academic year.`;
       } else {
-        const typeStr = currentType === 'answer-key' ? 'Model Answer Keys' : 'Model Question Papers';
-        seoTitle = `Karnataka SSLC ${medStr} Class 10 ${resStr} ${typeStr} | Namma Toppers`;
-        seoDesc = `Download Karnataka SSLC Class 10 ${medStr} ${resStr} ${typeStr} from Namma Toppers.`;
+        seoTitle = `Class 10 SSLC ${medStr} ${resStr} Model Question Papers & Answer Keys 2026–27 | Namma Toppers`;
+        seoDesc = `Access Karnataka SSLC Class 10 ${medStr} ${resStr} Model Question Papers and Answer Keys for the 2026–27 academic year.`;
       }
 
       const typeStr = (sslcResource === 'notes' || sslcResource === 'board-prep') ? '' : (currentType === 'answer-key' ? 'Model Answer Key' : 'Model Question Paper');
@@ -631,21 +629,32 @@ document.addEventListener('DOMContentLoaded', () => {
       if (section === 'english-medium') secTitle = 'English Medium';
 
       const classStr = `Class ${currentClassId}`;
-      let assessStr = assessment.toUpperCase();
+      let assessTag = assessment.toUpperCase();
       if (assessment === 'unit-test') {
-        assessStr = `Unit Test Unit ${unit}`;
+        assessTag = `Unit Test Unit ${unit}`;
       } else if (assessment === 'notes') {
-        assessStr = 'Notes';
+        assessTag = 'Notes';
       }
 
-      const typeStr = assessment === 'notes' ? '' : (currentType === 'answer-key' ? 'Model Answer Keys' : 'Model Question Papers');
-
-      if (typeStr) {
-        seoTitle = `Karnataka ${secTitle} ${classStr} ${assessStr} ${typeStr} 2026–27 | Namma Toppers`;
-        seoDesc = `Download Karnataka State Board ${secTitle} ${classStr} ${assessStr} ${typeStr} for 2026–27 academic practice from Namma Toppers.`;
+      if (section === 'kannada-medium') {
+        if (assessment === 'notes') {
+          seoTitle = `Class ${currentClassId} Kannada Medium Notes 2026–27 | Namma Toppers`;
+          seoDesc = `Access Karnataka State Board Class ${currentClassId} Kannada Medium Notes for the 2026–27 academic year.`;
+        } else {
+          seoTitle = `Class ${currentClassId} Kannada Medium ${assessTag} Model Question Papers & Answer Keys 2026–27 | Namma Toppers`;
+          seoDesc = `Access Karnataka State Board Class ${currentClassId} Kannada Medium ${assessTag} Model Question Papers and Answer Keys for the 2026–27 academic year.`;
+        }
+      } else if (section === 'english-medium') {
+        if (assessment === 'notes') {
+          seoTitle = `Class ${currentClassId} English Medium Notes 2026–27 | Namma Toppers`;
+          seoDesc = `Access Karnataka State Board Class ${currentClassId} English Medium Notes for the 2026–27 academic year.`;
+        } else {
+          seoTitle = `Class ${currentClassId} English Medium ${assessTag} Model Question Papers & Answer Keys 2026–27 | Namma Toppers`;
+          seoDesc = `Access Karnataka State Board Class ${currentClassId} English Medium ${assessTag} Model Question Papers and Answer Keys for the 2026–27 academic year.`;
+        }
       } else {
-        seoTitle = `Karnataka ${secTitle} ${classStr} ${assessStr} | Namma Toppers`;
-        seoDesc = `Download Karnataka State Board ${secTitle} ${classStr} ${assessStr} from Namma Toppers.`;
+        seoTitle = `Class ${currentClassId} Bilingual ${assessTag} Model Question Papers & Answer Keys 2026–27 | Namma Toppers`;
+        seoDesc = `Access Karnataka State Board Bilingual Class ${currentClassId} ${assessTag} Model Question Papers and Answer Keys for the 2026–27 academic year.`;
       }
 
       if (breadcrumbsEl) {
@@ -672,27 +681,38 @@ document.addEventListener('DOMContentLoaded', () => {
       metaDesc.setAttribute('content', seoDesc);
     }
 
+    // Dynamic Intro Line according to exact formula
     const introEl = document.getElementById('resource-dynamic-intro');
     if (introEl) {
       if (isSSLC) {
         const medStr = sslcMedium === 'kannada' ? 'Kannada Medium' : 'English Medium';
         if (sslcResource === 'board-prep') {
           const catClean = sslcCategory.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-          introEl.textContent = `Karnataka SSLC Class 10 ${medStr} ${catClean} board examination materials for the 2026–27 academic year. ${transparencyNote}`;
+          introEl.textContent = `Karnataka SSLC Class 10 ${medStr} ${catClean} for the 2026–27 academic year.`;
         } else if (sslcResource === 'notes') {
-          introEl.textContent = `Karnataka SSLC Class 10 ${medStr} subject notes for the 2026–27 academic year. ${transparencyNote}`;
+          introEl.textContent = `Karnataka SSLC Class 10 ${medStr} Notes for the 2026–27 academic year.`;
         } else {
-          const typeStr = currentType === 'answer-key' ? 'Model Answer Keys' : 'Model Question Papers';
-          introEl.textContent = `Karnataka SSLC Class 10 ${medStr} ${sslcResource.toUpperCase()} ${typeStr} for the 2026–27 academic year. ${transparencyNote}`;
+          introEl.textContent = `Karnataka SSLC Class 10 ${medStr} ${sslcResource.toUpperCase()} Model Question Papers with Answer Keys for the 2026–27 academic year.`;
         }
       } else {
-        let secTitle = 'Bilingual';
-        if (section === 'kannada-medium') secTitle = 'Kannada Medium';
-        if (section === 'english-medium') secTitle = 'English Medium';
         const classStr = `Class ${currentClassId}`;
-        const displayAssess = assessment === 'unit-test' ? `Unit Test Unit ${unit}` : (assessment === 'notes' ? 'Notes' : assessment.toUpperCase());
-        const typeLabel = assessment === 'notes' ? '' : (currentType === 'answer-key' ? 'Model Answer Keys' : 'Model Question Papers');
-        introEl.textContent = `Karnataka State Board ${secTitle} ${classStr} ${displayAssess} ${typeLabel} for the 2026–27 academic year. ${transparencyNote}`;
+        const assessTag = assessment === 'unit-test' ? `Unit Test Unit ${unit}` : (assessment === 'notes' ? 'Notes' : assessment.toUpperCase());
+        
+        if (section === 'kannada-medium') {
+          if (assessment === 'notes') {
+            introEl.textContent = `Karnataka State Board Class ${currentClassId} Kannada Medium Notes for the 2026–27 academic year.`;
+          } else {
+            introEl.textContent = `Karnataka State Board Class ${currentClassId} Kannada Medium ${assessTag} Model Question Papers with Answer Keys for the 2026–27 academic year.`;
+          }
+        } else if (section === 'english-medium') {
+          if (assessment === 'notes') {
+            introEl.textContent = `Karnataka State Board Class ${currentClassId} English Medium Notes for the 2026–27 academic year.`;
+          } else {
+            introEl.textContent = `Karnataka State Board Class ${currentClassId} English Medium ${assessTag} Model Question Papers with Answer Keys for the 2026–27 academic year.`;
+          }
+        } else {
+          introEl.textContent = `Karnataka State Board Bilingual Class ${currentClassId} ${assessTag} Model Question Papers with Answer Keys for the 2026–27 academic year.`;
+        }
       }
     }
   }
