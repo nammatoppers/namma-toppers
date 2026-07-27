@@ -1,6 +1,6 @@
 /**
  * Namma Toppers - Homepage Interactive Logic (app.js)
- * Manages Progressive Disclosure Controls, Social Links & GA4 Tracking.
+ * Manages Progressive Disclosure Controls, Social Links, Transparent Labels & GA4 Tracking.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -316,6 +316,9 @@ document.addEventListener('DOMContentLoaded', () => {
           akHref = `resources.html?section=${sectionParam}&class=${state.classId}&assessment=${state.assessment}&type=answer-key`;
         }
 
+        const qpLabelText = 'Model Question Paper';
+        const akLabelText = 'Model Answer Key';
+
         const qpBtn = document.createElement('a');
         qpBtn.className = 'action-btn action-qp';
         qpBtn.href = qpHref;
@@ -326,7 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <line x1="16" y1="13" x2="8" y2="13"></line>
             <line x1="16" y1="17" x2="8" y2="17"></line>
           </svg>
-          Question Paper
+          ${qpLabelText}
         `;
 
         const akBtn = document.createElement('a');
@@ -336,7 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path>
           </svg>
-          Answer Key
+          ${akLabelText}
         `;
 
         buttonsContainer.appendChild(qpBtn);
@@ -523,7 +526,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
             <polyline points="14 2 14 8 20 8"></polyline>
           </svg>
-          Question Paper
+          Model Question Paper
         `;
 
         const akBtn = document.createElement('a');
@@ -533,7 +536,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path>
           </svg>
-          Answer Key
+          Model Answer Key
         `;
 
         buttonsContainer.appendChild(qpBtn);

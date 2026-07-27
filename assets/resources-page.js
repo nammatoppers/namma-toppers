@@ -1,10 +1,9 @@
 /**
  * Namma Toppers - Resource Page Logic (resources-page.js)
- * Supports 4 Top-Level Sections with GA4 Event Tracking:
- * - resource_open
- * - class_select
- * - assessment_select
- * - social_click
+ * Supports 4 Top-Level Sections with Transparent Resource Labels & GA4 Event Tracking:
+ * - Model Question Paper / Model Answer Key
+ * - Previous Question Paper / Official Model Question Paper
+ * - Transparency Note & GA4 Event Tracking
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -424,7 +423,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Render Resource Type Toggle
+  // Render Resource Type Toggle (Supporting Model / Official / Previous distinctions)
   function renderTypeSelector() {
     if (!typeGroupEl || !typeSelectorContainer) return;
 
@@ -436,9 +435,20 @@ document.addEventListener('DOMContentLoaded', () => {
     typeGroupEl.style.display = 'flex';
     typeSelectorContainer.innerHTML = '';
 
+    let qpLabel = 'Model Question Paper';
+    let akLabel = 'Model Answer Key';
+
+    if (isSSLC && sslcResource === 'board-prep' && sslcCategory === 'previous-year-papers') {
+      qpLabel = 'Previous Question Paper';
+      akLabel = 'Answer Key';
+    } else if (isSSLC && sslcResource === 'board-prep' && sslcCategory === 'official-model-papers') {
+      qpLabel = 'Official Model Question Paper';
+      akLabel = 'Official Answer Key';
+    }
+
     const types = [
-      { id: 'question-paper', label: 'Question Paper' },
-      { id: 'answer-key', label: 'Answer Key' }
+      { id: 'question-paper', label: qpLabel },
+      { id: 'answer-key', label: akLabel }
     ];
 
     types.forEach((item) => {
@@ -528,8 +538,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (pdfUrl && typeof pdfUrl === 'string' && pdfUrl.trim() !== '' && pdfUrl.trim() !== '#') {
         const btnText = isNotesMode ? 'Open Notes' : 'Open PDF';
+        const ariaLabelText = isNotesMode ? `Open Notes for ${subjectObj.name}` : (isAnswerKey ? `Open Model Answer Key for ${subjectObj.name}` : `Open Model Question Paper for ${subjectObj.name}`);
         actionButtonHtml = `
-          <a href="${pdfUrl.trim()}" target="_blank" rel="noopener noreferrer" class="btn-open-pdf" aria-label="${btnText} for ${subjectObj.name}">
+          <a href="${pdfUrl.trim()}" target="_blank" rel="noopener noreferrer" class="btn-open-pdf" aria-label="${ariaLabelText}">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
               <polyline points="14 2 14 8 20 8"></polyline>
@@ -579,10 +590,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Update Breadcrumbs & Titles
+  // Update Breadcrumbs, Dynamic Intro & Document Titles
   function updateBreadcrumbs() {
     let seoTitle = "";
     let seoDesc = "";
+    const transparencyNote = "Model resources prepared for practice and academic support. Namma Toppers is an independent educational platform and is not an official government website.";
 
     if (isSSLC) {
       const medStr = sslcMedium === 'kannada' ? 'Kannada Medium' : 'English Medium';
@@ -598,12 +610,12 @@ document.addEventListener('DOMContentLoaded', () => {
         seoTitle = `Karnataka SSLC ${medStr} Class 10 Notes | Namma Toppers`;
         seoDesc = `Download Karnataka SSLC Class 10 ${medStr} Notes from Namma Toppers.`;
       } else {
-        const typeStr = currentType === 'answer-key' ? 'Answer Keys' : 'Question Papers';
+        const typeStr = currentType === 'answer-key' ? 'Model Answer Keys' : 'Model Question Papers';
         seoTitle = `Karnataka SSLC ${medStr} Class 10 ${resStr} ${typeStr} | Namma Toppers`;
         seoDesc = `Download Karnataka SSLC Class 10 ${medStr} ${resStr} ${typeStr} from Namma Toppers.`;
       }
 
-      const typeStr = (sslcResource === 'notes' || sslcResource === 'board-prep') ? '' : (currentType === 'answer-key' ? 'Answer Key' : 'Question Paper');
+      const typeStr = (sslcResource === 'notes' || sslcResource === 'board-prep') ? '' : (currentType === 'answer-key' ? 'Model Answer Key' : 'Model Question Paper');
 
       if (breadcrumbsEl) {
         breadcrumbsEl.innerHTML = `SSLC Zone &rsaquo; ${medStr} &rsaquo; ${resStr} ${typeStr ? '&rsaquo; <strong>' + typeStr + '</strong>' : ''}`;
@@ -626,18 +638,18 @@ document.addEventListener('DOMContentLoaded', () => {
         assessStr = 'Notes';
       }
 
-      const typeStr = assessment === 'notes' ? '' : (currentType === 'answer-key' ? 'Answer Keys' : 'Question Papers');
+      const typeStr = assessment === 'notes' ? '' : (currentType === 'answer-key' ? 'Model Answer Keys' : 'Model Question Papers');
 
       if (typeStr) {
-        seoTitle = `Karnataka ${secTitle} ${classStr} ${assessStr} ${typeStr} | Namma Toppers`;
-        seoDesc = `Download Karnataka State Board ${secTitle} ${classStr} ${assessStr} ${typeStr} from Namma Toppers.`;
+        seoTitle = `Karnataka ${secTitle} ${classStr} ${assessStr} ${typeStr} 2026–27 | Namma Toppers`;
+        seoDesc = `Download Karnataka State Board ${secTitle} ${classStr} ${assessStr} ${typeStr} for 2026–27 academic practice from Namma Toppers.`;
       } else {
         seoTitle = `Karnataka ${secTitle} ${classStr} ${assessStr} | Namma Toppers`;
         seoDesc = `Download Karnataka State Board ${secTitle} ${classStr} ${assessStr} from Namma Toppers.`;
       }
 
       if (breadcrumbsEl) {
-        const typeLabel = currentType === 'answer-key' ? 'Answer Key' : 'Question Paper';
+        const typeLabel = currentType === 'answer-key' ? 'Model Answer Key' : 'Model Question Paper';
         const displayAssess = assessment === 'unit-test' ? `Unit Test &rsaquo; Unit ${unit}` : (assessment === 'notes' ? 'Notes' : assessment.toUpperCase());
         if (assessment === 'notes') {
           breadcrumbsEl.innerHTML = `${secTitle} Resources &rsaquo; ${classStr} &rsaquo; <strong>${displayAssess}</strong>`;
@@ -647,7 +659,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       if (pageTitleEl) {
-        const typeLabel = currentType === 'answer-key' ? 'Answer Key' : 'Question Paper';
+        const typeLabel = currentType === 'answer-key' ? 'Model Answer Key' : 'Model Question Paper';
         const displayAssess = assessment === 'unit-test' ? `Unit Test Unit ${unit}` : (assessment === 'notes' ? 'Notes' : assessment.toUpperCase());
         pageTitleEl.textContent = `${classStr} ${displayAssess} ${assessment === 'notes' ? '' : typeLabel}`.trim();
       }
@@ -666,12 +678,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const medStr = sslcMedium === 'kannada' ? 'Kannada Medium' : 'English Medium';
         if (sslcResource === 'board-prep') {
           const catClean = sslcCategory.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-          introEl.textContent = `Karnataka SSLC Class 10 ${medStr} ${catClean} board examination materials for the 2026–27 academic year. Practice with model papers, blueprints and revision guides for top results.`;
+          introEl.textContent = `Karnataka SSLC Class 10 ${medStr} ${catClean} board examination materials for the 2026–27 academic year. ${transparencyNote}`;
         } else if (sslcResource === 'notes') {
-          introEl.textContent = `Karnataka SSLC Class 10 ${medStr} subject notes for the 2026–27 academic year. Simplified concepts and comprehensive study references for board exam preparation.`;
+          introEl.textContent = `Karnataka SSLC Class 10 ${medStr} subject notes for the 2026–27 academic year. ${transparencyNote}`;
         } else {
-          const typeStr = currentType === 'answer-key' ? 'Answer Keys' : 'Question Papers';
-          introEl.textContent = `Karnataka SSLC Class 10 ${medStr} ${sslcResource.toUpperCase()} ${typeStr} for the 2026–27 academic year. Essential resource for self-assessment and exam readiness.`;
+          const typeStr = currentType === 'answer-key' ? 'Model Answer Keys' : 'Model Question Papers';
+          introEl.textContent = `Karnataka SSLC Class 10 ${medStr} ${sslcResource.toUpperCase()} ${typeStr} for the 2026–27 academic year. ${transparencyNote}`;
         }
       } else {
         let secTitle = 'Bilingual';
@@ -679,8 +691,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (section === 'english-medium') secTitle = 'English Medium';
         const classStr = `Class ${currentClassId}`;
         const displayAssess = assessment === 'unit-test' ? `Unit Test Unit ${unit}` : (assessment === 'notes' ? 'Notes' : assessment.toUpperCase());
-        const typeLabel = assessment === 'notes' ? '' : (currentType === 'answer-key' ? 'Answer Keys' : 'Question Papers');
-        introEl.textContent = `Karnataka State Board ${secTitle} ${classStr} ${displayAssess} ${typeLabel} for the 2026–27 academic year. Access subject-wise materials for classroom practice, revision and assessment preparation.`;
+        const typeLabel = assessment === 'notes' ? '' : (currentType === 'answer-key' ? 'Model Answer Keys' : 'Model Question Papers');
+        introEl.textContent = `Karnataka State Board ${secTitle} ${classStr} ${displayAssess} ${typeLabel} for the 2026–27 academic year. ${transparencyNote}`;
       }
     }
   }
