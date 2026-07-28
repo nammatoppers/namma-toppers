@@ -190,6 +190,136 @@ window.NAMMA_TOPPERS_RESOURCES = {
     subtitle: "Class 10 Board Resources",
     kannadaMedium: createSSLCConfig(),
     englishMedium: createSSLCConfig()
+  },
+
+  // SSLC FIRST LANGUAGE ENGLISH (2026–27)
+  sslcFirstLanguageEnglish: {
+    title: "SSLC First Language English",
+    academicYear: "2026–27",
+    notes: {
+      prose: [
+        {
+          id: "a-wrong-man-in-workers-paradise",
+          title: "A Wrong Man in Workers’ Paradise",
+          category: "prose",
+          url: "/sslc/first-language-english/prose/a-wrong-man-in-workers-paradise/",
+          pdfUrl: "https://drive.google.com/file/d/1ouMAaHvJtoa6ukuXdwPEqjUXGELX65te/view?usp=drive_link",
+          summary: "Rabindranath Tagore's satirical story contrasts a paradise of endless utility with an artist who creates purposeless art. When an idler painter enters Workers' Paradise, his artistic drawings on a girl's pitcher inspire her to appreciate beauty over sheer utility, leading to an awakening among the inhabitants about the value of art and emotions in human life."
+        },
+        {
+          id: "the-elixir-of-life",
+          title: "The Elixir of Life",
+          category: "prose",
+          url: "/sslc/first-language-english/prose/the-elixir-of-life/",
+          pdfUrl: "https://drive.google.com/file/d/1yOKmNl5FF2Ln1FP_HKipafm4SeEOah4P/view?usp=drive_link",
+          summary: "Sir C.V. Raman highlights water as the true elixir of life, far superior to any imaginary divine potion. He describes how water shapes landscapes, sustains agriculture, enables human civilization, and prevents soil erosion, emphasizing the critical need for water conservation, afforestation, and systematic river water management."
+        },
+        {
+          id: "the-gift-of-the-magi",
+          title: "The Gift of the Magi",
+          category: "prose",
+          url: "/sslc/first-language-english/prose/the-gift-of-the-magi/",
+          pdfUrl: "https://drive.google.com/file/d/1Fnzl0vGqqnJeBdifSzF9tHfsqThcNSvG/view?usp=drive_link",
+          summary: "O. Henry's heartwarming classic tells the story of Jim and Della, a young impoverished couple who sell their most prized possessions—Della's beautiful hair and Jim's gold watch—to buy Christmas gifts for each other. Their selfless sacrifices demonstrate that true love and generosity are the greatest gifts of all."
+        },
+        {
+          id: "louis-pasteur-conqueror-of-disease",
+          title: "Louis Pasteur, Conqueror of Disease",
+          category: "prose",
+          url: "/sslc/first-language-english/prose/louis-pasteur-conqueror-of-disease/",
+          pdfUrl: "https://drive.google.com/file/d/1pbxR9wJc4w3cEUJ70rtiYPPKhWm5113i/view?usp=drive_link",
+          summary: "E.H. Carter portrays the life and scientific breakthroughs of French scientist Louis Pasteur. From discovering germ theory and pasteurization to developing vaccines against anthrax and rabies, Pasteur devoted his life to curing diseases, saving millions of lives, and advancing modern medicine."
+        },
+        {
+          id: "what-is-moral-action",
+          title: "What is Moral Action?",
+          category: "prose",
+          url: "/sslc/first-language-english/prose/what-is-moral-action/",
+          pdfUrl: "https://drive.google.com/file/d/1cS4Fwc9XxK5ETzIvXE_H0jRCD3wOn6iP/view?usp=drive_link",
+          summary: "Mahatma Gandhi explores the true nature of morality, arguing that an action is truly moral only when performed intentionally out of free will, without fear, compulsion, or expectation of personal gain. Moral actions stem from good motives, selflessness, and devotion to duty rather than societal approval."
+        }
+      ],
+      poetry: [
+        {
+          id: "to-a-pair-of-sarus-cranes",
+          title: "To a Pair of Sarus Cranes",
+          category: "poetry",
+          url: "/sslc/first-language-english/poetry/to-a-pair-of-sarus-cranes/",
+          pdfUrl: "https://drive.google.com/file/d/1QypjiYUZGn9w4sddUeOwjRreJhtoyXPL/view?usp=drive_link",
+          summary: "Manmohan Singh's poignant poem depicts the tragic killing of a male Sarus crane by an unfeeling hunter. The female crane grieves deeply over the dead bird's remains, carrying a feather in sorrow until she dies of heart-wrenching grief, highlighting the emotional depth of nature compared to human cruelty."
+        },
+        {
+          id: "abraham-lincolns-letter",
+          title: "Abraham Lincoln’s Letter",
+          category: "poetry",
+          url: "/sslc/first-language-english/poetry/abraham-lincolns-letter/",
+          pdfUrl: "https://drive.google.com/file/d/17xEQXjDL5mLdfIewDH2t1tD0g_IbKWsP/view?usp=drive_link",
+          summary: "In this inspiring poem, Abraham Lincoln writes to his son's teacher, requesting that the boy be taught the value of honesty, courage, faith, and independent thinking. Lincoln emphasizes learning to win gracefully, lose without bitterness, stand by one's convictions, and trust oneself over the crowd."
+        },
+        {
+          id: "vachana",
+          title: "Vachana",
+          category: "poetry",
+          url: "/sslc/first-language-english/poetry/vachana/",
+          pdfUrl: "https://drive.google.com/file/d/1sYeCuOJhie73nBnJ59qhC3Zxr2bcRUhp/view?usp=drive_link",
+          summary: "Basavanna contrasts rich people who build physical stone temples for Lord Shiva with poor devotees whose own bodies serve as living temples. He reflects that physical structures may perish over time, but the spiritual devotion of the soul (the moving) remains eternal and indestructible."
+        },
+        {
+          id: "lochinvar",
+          title: "Lochinvar",
+          category: "poetry",
+          url: "/sslc/first-language-english/poetry/lochinvar/",
+          pdfUrl: "https://drive.google.com/file/d/1zVSZOb6cjhE4tmh46KHyy4T96fypYHQX/view?usp=drive_link",
+          summary: "Sir Walter Scott's romantic ballad narrates the story of the brave knight Lochinvar, who rides swiftly to Netherby Hall on Ellen's wedding day. Daringly rescuing his beloved from an arranged marriage to a laggard groom, Lochinvar dances Ellen out the door, leaps onto his horse, and rides away victorious."
+        },
+        {
+          id: "a-poison-tree",
+          title: "A Poison Tree",
+          category: "poetry",
+          url: "/sslc/first-language-english/poetry/a-poison-tree/",
+          pdfUrl: "https://drive.google.com/file/d/1Y8WxTrPBtLqhcC3_c7GY-95Rzp7EWJLi/view?usp=drive_link",
+          summary: "William Blake explores the destructive nature of suppressed anger. While speaking one's wrath to a friend dissipates it, nurturing hidden hatred towards a foe causes it to grow into a poisonous tree. The foe eats the shiny apple from the tree and falls dead, illustrating the fatal consequences of harbored malice."
+        }
+      ],
+      supplementary: [
+        {
+          id: "treasure-island",
+          title: "Treasure Island",
+          category: "supplementary",
+          url: "/sslc/first-language-english/supplementary/treasure-island/",
+          pdfUrl: "https://drive.google.com/file/d/1CkDaMmTBdX2Db3-1l-SlegGDEaNo5uSg/view?usp=drive_link",
+          summary: "Robert Louis Stevenson's classic adventure follows young Jim Hawkins after he discovers a treasure map belonging to Captain Flint. Joining Squire Trelawney and Dr. Livesey aboard the Hispaniola, Jim faces treacherous mutiny led by the pirate Long John Silver and courageously helps secure the hidden island treasure."
+        },
+        {
+          id: "karna",
+          title: "Karna",
+          category: "supplementary",
+          url: "/sslc/first-language-english/supplementary/karna/",
+          pdfUrl: "https://drive.google.com/file/d/1wm6JG6yLFN6ie2QqemswRkUWFVFuWXz_/view?usp=drive_link",
+          summary: "Adapted from C. Rajagopalachari's Mahabharata, this narrative details the noble yet tragic life of Karna. Despite possessing unmatched archery skills and steadfast loyalty to Duryodhana, Karna faces social rejection, curses from his gurus, and moral dilemmas, remaining an emblem of generosity, honor, and courage."
+        }
+      ]
+    },
+    midterm: [
+      {
+        set: 1,
+        setName: "Set 1",
+        questionPaper: "https://drive.google.com/file/d/188uOhpkLJPs4Vpk3_S59hL6qAs5hG0c7/view?usp=drive_link",
+        answerKey: "https://drive.google.com/file/d/12dO0q-Q8nvcrtllluX1lWE3NMlgK5RrY/view?usp=drive_link"
+      },
+      {
+        set: 2,
+        setName: "Set 2",
+        questionPaper: "https://drive.google.com/file/d/1kHs6ngvSsI3w0ILCzTBn5l3tY621bV-P/view?usp=drive_link",
+        answerKey: "https://drive.google.com/file/d/1pkYo2bbwd2yFNoKLGHUw9f1eXxX9npeG/view?usp=drive_link"
+      },
+      {
+        set: 3,
+        setName: "Set 3",
+        questionPaper: "https://drive.google.com/file/d/1sMk27kwKeb2y8V1J9LIZSbEV0W4si3lP/view?usp=drive_link",
+        answerKey: "https://drive.google.com/file/d/1Qy_hudKmxG4vQeNEORoTsAxoVnIu1NUr/view?usp=drive_link"
+      }
+    ]
   }
 
 };
