@@ -289,7 +289,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const sectionParam = sectionDataKey === 'bilingual' ? 'bilingual' : (sectionDataKey === 'kannadaMedium' ? 'kannada-medium' : 'english-medium');
 
       if (state.assessment === 'notes') {
-        const notesHref = `resources.html?section=${sectionParam}&class=${state.classId}&assessment=notes`;
+        let notesHref = `resources.html?section=${sectionParam}&class=${state.classId}&assessment=notes`;
+        let btnLabel = 'Explore Notes';
+        if (sectionParam === 'kannada-medium' && state.classId === 6) {
+          notesHref = '/kannada-medium/class-6/notes/';
+        }
         const aBtn = document.createElement('a');
         aBtn.className = 'action-btn action-ak';
         aBtn.style.maxWidth = '340px';
@@ -300,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
             <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
           </svg>
-          Open Notes
+          ${btnLabel}
         `;
         buttonsContainer.appendChild(aBtn);
       } else {
