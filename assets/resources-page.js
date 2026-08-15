@@ -329,7 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 'fa2', label: 'FA-2' },
         { id: 'sa1', label: 'SA-1' },
         { id: 'sa2', label: 'SA-2' },
-        { id: 'unit-test', label: 'Unit Tests' }
+        { id: 'unit-test-model-qp', label: 'Unit Test Model QPs' }
       ];
 
       if (section !== 'bilingual' && currentClassId >= 6) {
@@ -342,6 +342,14 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.textContent = opt.label;
         btn.setAttribute('type', 'button');
         btn.addEventListener('click', () => {
+          if (opt.id === 'unit-test-model-qp') {
+            if (currentClassId >= 1 && currentClassId <= 3) {
+              window.location.href = `/bilingual/class-${currentClassId}/unit-test-model-question-papers/`;
+            } else {
+              window.location.href = `/unit-test-model-question-papers/`;
+            }
+            return;
+          }
           assessment = opt.id;
           trackGAEvent('assessment_select', { section: sectionDataKey, class: currentClassId.toString(), assessment: opt.id });
           updateUrlParams();

@@ -1,0 +1,8 @@
+﻿# 301 Redirects for Obsolete Unit Test URLs
+/resources.html?section=bilingual&class=1&assessment=unit-test /bilingual/class-1/unit-test-model-question-papers/ 301!
+/resources.html?section=bilingual&class=2&assessment=unit-test /bilingual/class-2/unit-test-model-question-papers/ 301!
+/resources.html?section=bilingual&class=3&assessment=unit-test /bilingual/class-3/unit-test-model-question-papers/ 301!
+/resources.html?section=bilingual&class=4&assessment=unit-test /unit-test-model-question-papers/ 301!
+/resources.html?section=bilingual&class=5&assessment=unit-test /unit-test-model-question-papers/ 301!
+/resources.html?section=kannada-medium&class=6&assessment=unit-test /unit-test-model-question-papers/ 301!
+/resources.html?assessment=unit-test /unit-test-model-question-papers/ 301!

@@ -50,9 +50,7 @@ function createPrimaryClass(name, fa1Config = null) {
     fa2: JSON.parse(JSON.stringify(defaultPrimarySubjects)),
     sa1: JSON.parse(JSON.stringify(defaultPrimarySubjects)),
     sa2: JSON.parse(JSON.stringify(defaultPrimarySubjects)),
-    unitTests: {
-      unit1: JSON.parse(JSON.stringify(defaultPrimarySubjects))
-    }
+    unitTestModelQpsUrl: "/unit-test-model-question-papers/"
   };
 }
 
@@ -63,10 +61,8 @@ function createHigherClass(name, fa1Config = null) {
     fa2: JSON.parse(JSON.stringify(defaultHigherSubjects)),
     sa1: JSON.parse(JSON.stringify(defaultHigherSubjects)),
     sa2: JSON.parse(JSON.stringify(defaultHigherSubjects)),
-    unitTests: {
-      unit1: JSON.parse(JSON.stringify(defaultHigherSubjects))
-    },
-    notes: JSON.parse(JSON.stringify(defaultHigherNotesSubjects))
+    notes: JSON.parse(JSON.stringify(defaultHigherNotesSubjects)),
+    unitTestModelQpsUrl: "/unit-test-model-question-papers/"
   };
 }
 

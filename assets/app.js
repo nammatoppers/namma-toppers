@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 'fa2', label: 'FA-2' },
         { id: 'sa1', label: 'SA-1' },
         { id: 'sa2', label: 'SA-2' },
-        { id: 'unit-test', label: 'Unit Tests' }
+        { id: 'unit-test-model-qp', label: 'Unit Test Model QPs' }
       ];
 
       if (secKey !== 'bilingual' && state.classId >= 6) {
@@ -248,6 +248,15 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.setAttribute('type', 'button');
 
         btn.addEventListener('click', () => {
+          if (opt.id === 'unit-test-model-qp') {
+            const classNum = parseInt(state.classId, 10);
+            if (classNum >= 1 && classNum <= 3) {
+              window.location.href = `/bilingual/class-${classNum}/unit-test-model-question-papers/`;
+            } else {
+              window.location.href = `/unit-test-model-question-papers/`;
+            }
+            return;
+          }
           state.assessment = opt.id;
           trackGAEvent('assessment_select', { section: sectionDataKey, class: state.classId.toString(), assessment: opt.id });
           updateUI();
