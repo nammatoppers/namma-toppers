@@ -435,7 +435,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderTypeSelector() {
     if (!typeGroupEl || !typeSelectorContainer) return;
 
-    if ((isSSLC && (sslcResource === 'notes' || sslcResource === 'board-prep')) || (!isSSLC && assessment === 'notes')) {
+    if ((isSSLC && (sslcResource === 'notes' || sslcResource === 'board-prep')) || (!isSSLC && (assessment === 'notes' || assessment === 'sa1'))) {
       typeGroupEl.style.display = 'none';
       return;
     }
@@ -538,6 +538,8 @@ document.addEventListener('DOMContentLoaded', () => {
         pdfUrl = subjectObj.notesUrl;
       } else if (isSSLC && sslcResource === 'board-prep') {
         pdfUrl = subjectObj.pdfUrl;
+      } else if (!isSSLC && assessment === 'sa1') {
+        pdfUrl = subjectObj.pdfUrl || subjectObj.questionPaper;
       } else {
         pdfUrl = subjectObj[keyType];
       }
@@ -545,19 +547,34 @@ document.addEventListener('DOMContentLoaded', () => {
       let actionButtonHtml = '';
 
       if (pdfUrl && typeof pdfUrl === 'string' && pdfUrl.trim() !== '' && pdfUrl.trim() !== '#') {
-        const btnText = isNotesMode ? 'Open Notes' : 'Open PDF';
-        const ariaLabelText = isNotesMode ? `Open Notes for ${subjectObj.name}` : (isAnswerKey ? `Open Model Answer Key for ${subjectObj.name}` : `Open Model Question Paper for ${subjectObj.name}`);
-        actionButtonHtml = `
-          <a href="${pdfUrl.trim()}" target="_blank" rel="noopener noreferrer" class="btn-open-pdf" aria-label="${ariaLabelText}">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-              <polyline points="14 2 14 8 20 8"></polyline>
-              <line x1="12" y1="18" x2="12" y2="12"></line>
-              <polyline points="9 15 12 18 15 15"></polyline>
-            </svg>
-            ${btnText}
-          </a>
-        `;
+        if (!isSSLC && assessment === 'sa1') {
+          const ariaLabelText = `View Class ${currentClassId} ${subjectObj.name} SA-1 Complete PDF containing Question Paper, Answer Key and Blueprint`;
+          actionButtonHtml = `
+            <a href="${pdfUrl.trim()}" target="_blank" rel="noopener noreferrer" class="btn-open-pdf" aria-label="${ariaLabelText}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="12" y1="18" x2="12" y2="12"></line>
+                <polyline points="9 15 12 18 15 15"></polyline>
+              </svg>
+              View Complete SA-1 PDF
+            </a>
+          `;
+        } else {
+          const btnText = isNotesMode ? 'Open Notes' : 'Open PDF';
+          const ariaLabelText = isNotesMode ? `Open Notes for ${subjectObj.name}` : (isAnswerKey ? `Open Model Answer Key for ${subjectObj.name}` : `Open Model Question Paper for ${subjectObj.name}`);
+          actionButtonHtml = `
+            <a href="${pdfUrl.trim()}" target="_blank" rel="noopener noreferrer" class="btn-open-pdf" aria-label="${ariaLabelText}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="12" y1="18" x2="12" y2="12"></line>
+                <polyline points="9 15 12 18 15 15"></polyline>
+              </svg>
+              ${btnText}
+            </a>
+          `;
+        }
       } else {
         actionButtonHtml = `
           <button class="badge-coming-soon" disabled aria-label="Coming Soon for ${subjectObj.name}">
@@ -570,13 +587,27 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       }
 
-      card.innerHTML = `
-        <div class="subject-info">
-          <div class="subject-icon-box">${iconCode}</div>
-          <div class="subject-name">${subjectObj.name}</div>
-        </div>
-        ${actionButtonHtml}
-      `;
+      if (!isSSLC && assessment === 'sa1') {
+        card.innerHTML = `
+          <div class="subject-info">
+            <div class="subject-icon-box">${iconCode}</div>
+            <div>
+              <div class="subject-name">${subjectObj.name}</div>
+              <div style="font-size: 13px; font-weight: 600; color: var(--teal-dark); margin-top: 3px;">SA-1 Complete Package</div>
+              <div style="font-size: 12px; color: #64748b; margin-top: 2px;">Question Paper &bull; Answer Key &bull; Blueprint</div>
+            </div>
+          </div>
+          ${actionButtonHtml}
+        `;
+      } else {
+        card.innerHTML = `
+          <div class="subject-info">
+            <div class="subject-icon-box">${iconCode}</div>
+            <div class="subject-name">${subjectObj.name}</div>
+          </div>
+          ${actionButtonHtml}
+        `;
+      }
 
       // Attach GA4 event listener on click
       const openAnchor = card.querySelector('.btn-open-pdf');
@@ -588,7 +619,7 @@ document.addEventListener('DOMContentLoaded', () => {
             assessment: isSSLC ? sslcResource : assessment,
             unit: assessment === 'unit-test' ? unit : '',
             subject: subjKey,
-            resource_type: isNotesMode ? 'notes' : (isSSLC && sslcResource === 'board-prep' ? sslcCategory : currentType),
+            resource_type: isNotesMode ? 'notes' : (assessment === 'sa1' ? 'sa1-complete-package' : (isSSLC && sslcResource === 'board-prep' ? sslcCategory : currentType)),
             resource_url: pdfUrl.trim()
           });
         });
@@ -644,7 +675,10 @@ document.addEventListener('DOMContentLoaded', () => {
         assessTag = 'Notes';
       }
 
-      if (section === 'kannada-medium') {
+      if (assessment === 'sa1') {
+        seoTitle = `Class ${currentClassId} SA-1 Question Papers, Answer Keys & Blueprints 2026–27 | Namma Toppers`;
+        seoDesc = `Access Karnataka Class ${currentClassId} SA-1 Question Papers, Answer Keys and Blueprints for the 2026–27 academic year on Namma Toppers.`;
+      } else if (section === 'kannada-medium') {
         if (assessment === 'notes') {
           seoTitle = `Class ${currentClassId} Kannada Medium Notes 2026–27 | Namma Toppers`;
           seoDesc = `Access Karnataka State Board Class ${currentClassId} Kannada Medium Notes for the 2026–27 academic year.`;
@@ -670,15 +704,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const displayAssess = assessment === 'unit-test' ? `Unit Test &rsaquo; Unit ${unit}` : (assessment === 'notes' ? 'Notes' : assessment.toUpperCase());
         if (assessment === 'notes') {
           breadcrumbsEl.innerHTML = `${secTitle} Resources &rsaquo; ${classStr} &rsaquo; <strong>${displayAssess}</strong>`;
+        } else if (assessment === 'sa1') {
+          breadcrumbsEl.innerHTML = `${secTitle} Resources &rsaquo; ${classStr} &rsaquo; <strong>SA-1 Complete Packages</strong>`;
         } else {
           breadcrumbsEl.innerHTML = `${secTitle} Resources &rsaquo; ${classStr} &rsaquo; ${displayAssess} &rsaquo; <strong>${typeLabel}</strong>`;
         }
       }
 
       if (pageTitleEl) {
-        const typeLabel = currentType === 'answer-key' ? 'Model Answer Key' : 'Model Question Paper';
-        const displayAssess = assessment === 'unit-test' ? `Unit Test Unit ${unit}` : (assessment === 'notes' ? 'Notes' : assessment.toUpperCase());
-        pageTitleEl.textContent = `${classStr} ${displayAssess} ${assessment === 'notes' ? '' : typeLabel}`.trim();
+        if (assessment === 'sa1') {
+          pageTitleEl.textContent = `${classStr} SA-1 Complete Packages`;
+        } else {
+          const typeLabel = currentType === 'answer-key' ? 'Model Answer Key' : 'Model Question Paper';
+          const displayAssess = assessment === 'unit-test' ? `Unit Test Unit ${unit}` : (assessment === 'notes' ? 'Notes' : assessment.toUpperCase());
+          pageTitleEl.textContent = `${classStr} ${displayAssess} ${assessment === 'notes' ? '' : typeLabel}`.trim();
+        }
       }
     }
 
@@ -706,7 +746,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const classStr = `Class ${currentClassId}`;
         const assessTag = assessment === 'unit-test' ? `Unit Test Unit ${unit}` : (assessment === 'notes' ? 'Notes' : assessment.toUpperCase());
         
-        if (section === 'kannada-medium') {
+        if (assessment === 'sa1') {
+          introEl.textContent = `Access Class ${currentClassId} SA-1 resources for the 2026–27 academic year. Each subject is provided as a complete PDF containing the Question Paper, Answer Key and Blueprint.`;
+        } else if (section === 'kannada-medium') {
           if (assessment === 'notes') {
             introEl.textContent = `Karnataka State Board Class ${currentClassId} Kannada Medium Notes for the 2026–27 academic year.`;
           } else {

@@ -43,12 +43,12 @@ const defaultBoardPrepCategorySubjects = {
   socialScience: { name: "Social Science", code: "SS", pdfUrl: "" }
 };
 
-function createPrimaryClass(name, fa1Config = null, fa2Config = null) {
+function createPrimaryClass(name, fa1Config = null, fa2Config = null, sa1Config = null) {
   return {
     name: name,
     fa1: fa1Config || JSON.parse(JSON.stringify(defaultPrimarySubjects)),
     fa2: fa2Config || JSON.parse(JSON.stringify(defaultPrimarySubjects)),
-    sa1: JSON.parse(JSON.stringify(defaultPrimarySubjects)),
+    sa1: sa1Config || JSON.parse(JSON.stringify(defaultPrimarySubjects)),
     sa2: JSON.parse(JSON.stringify(defaultPrimarySubjects)),
     unitTestModelQpsUrl: "/unit-test-model-question-papers/"
   };
@@ -102,6 +102,11 @@ window.NAMMA_TOPPERS_RESOURCES = {
         kannada: { name: "Kannada", code: "KAN", questionPaper: "https://drive.google.com/file/d/1uG1PS_Ydd19nEErbSSEg5ygOqNxIpcyq/view", answerKey: "https://drive.google.com/file/d/14szH9rMjEKelvUxcjwKVe_qtJgJC-EhL/view" },
         evs: { name: "EVS", code: "EVS", questionPaper: "https://drive.google.com/file/d/13qVV2s5JcQdHOZgvpJlEvbQUdvBTlgOh/view", answerKey: "https://drive.google.com/file/d/18Vd-r1hvH9eXg-EMxFi9Fyn6NvaQmTBW/view" },
         mathematics: { name: "Mathematics", code: "MATH", questionPaper: "https://drive.google.com/file/d/1T-t16q2XkGwsaJMB6MT1WG-A7c4Gg6Q3/view", answerKey: "https://drive.google.com/file/d/1e1Z-5TqlEiI7wl57DUo-Y0MpLL6loz51/view" }
+      }, {
+        english: { name: "English", code: "ENG", pdfUrl: "https://drive.google.com/file/d/19-j2KF5Wg0HrV43X7sXmSlO0oM8tUQg2/view", questionPaper: "https://drive.google.com/file/d/19-j2KF5Wg0HrV43X7sXmSlO0oM8tUQg2/view", answerKey: "https://drive.google.com/file/d/19-j2KF5Wg0HrV43X7sXmSlO0oM8tUQg2/view" },
+        kannada: { name: "Kannada", code: "KAN", pdfUrl: "https://drive.google.com/file/d/1AluQcozMzhMdioQTY-5pIbTM_BmTl7RD/view", questionPaper: "https://drive.google.com/file/d/1AluQcozMzhMdioQTY-5pIbTM_BmTl7RD/view", answerKey: "https://drive.google.com/file/d/1AluQcozMzhMdioQTY-5pIbTM_BmTl7RD/view" },
+        evs: { name: "EVS", code: "EVS", pdfUrl: "https://drive.google.com/file/d/1KYKFg1CAJ4qzSbKT0Bk_Al9npNCSbfJ6/view", questionPaper: "https://drive.google.com/file/d/1KYKFg1CAJ4qzSbKT0Bk_Al9npNCSbfJ6/view", answerKey: "https://drive.google.com/file/d/1KYKFg1CAJ4qzSbKT0Bk_Al9npNCSbfJ6/view" },
+        mathematics: { name: "Mathematics", code: "MATH", pdfUrl: "https://drive.google.com/file/d/175bDB3YmvmPnxyqJEKFqyd5V0lWSWCB5/view", questionPaper: "https://drive.google.com/file/d/175bDB3YmvmPnxyqJEKFqyd5V0lWSWCB5/view", answerKey: "https://drive.google.com/file/d/175bDB3YmvmPnxyqJEKFqyd5V0lWSWCB5/view" }
       }),
       "2": createPrimaryClass("Class 2", {
         kannada: { name: "Kannada", code: "KAN", questionPaper: "https://drive.google.com/file/d/1a7nbElJ6-pjMsE8K_JWuHiO8lrt6bc8T/view?usp=drive_link", answerKey: "https://drive.google.com/file/d/15yfWVRtGGff1Fup1wxCoX1Rn-9YdNsXr/view?usp=drive_link" },
@@ -113,6 +118,11 @@ window.NAMMA_TOPPERS_RESOURCES = {
         kannada: { name: "Kannada", code: "KAN", questionPaper: "https://drive.google.com/file/d/1Yg1jlPmCUXa--07oYdq-DvcdESKxCIXi/view", answerKey: "https://drive.google.com/file/d/1N8eHkpriGplVZ3YkGRKmpcfMyDyCcjLR/view" },
         evs: { name: "EVS", code: "EVS", questionPaper: "https://drive.google.com/file/d/1aWccHaoaYpOToYBH9j8-4IXj_7lpyrFr/view", answerKey: "https://drive.google.com/file/d/1GTxsB9Z_EQzAWc4tfvVyhQfCrXg-nRSF/view" },
         mathematics: { name: "Mathematics", code: "MATH", questionPaper: "https://drive.google.com/file/d/1WO55ghNggtMNC_9CHUcHdZW0WvRsCROU/view", answerKey: "https://drive.google.com/file/d/1v2tRaO0dwgQtPyapefcGeCADGlWRyBnH/view" }
+      }, {
+        english: { name: "English", code: "ENG", pdfUrl: "https://drive.google.com/file/d/16bVCAqOIzC9HCbwI0_BqxDMqmGIs5i3q/view", questionPaper: "https://drive.google.com/file/d/16bVCAqOIzC9HCbwI0_BqxDMqmGIs5i3q/view", answerKey: "https://drive.google.com/file/d/16bVCAqOIzC9HCbwI0_BqxDMqmGIs5i3q/view" },
+        kannada: { name: "Kannada", code: "KAN", pdfUrl: "https://drive.google.com/file/d/1izkupp5vEyN_k7WCV_OLSaXopWJQv-OF/view", questionPaper: "https://drive.google.com/file/d/1izkupp5vEyN_k7WCV_OLSaXopWJQv-OF/view", answerKey: "https://drive.google.com/file/d/1izkupp5vEyN_k7WCV_OLSaXopWJQv-OF/view" },
+        evs: { name: "EVS", code: "EVS", pdfUrl: "https://drive.google.com/file/d/1ss23S4Z0xAIdmB2U2H4lDIKXvN4EfZAW/view", questionPaper: "https://drive.google.com/file/d/1ss23S4Z0xAIdmB2U2H4lDIKXvN4EfZAW/view", answerKey: "https://drive.google.com/file/d/1ss23S4Z0xAIdmB2U2H4lDIKXvN4EfZAW/view" },
+        mathematics: { name: "Mathematics", code: "MATH", pdfUrl: "https://drive.google.com/file/d/1BJINn_a6vLZk2SHISlhUFO7JG3iKmhjw/view", questionPaper: "https://drive.google.com/file/d/1BJINn_a6vLZk2SHISlhUFO7JG3iKmhjw/view", answerKey: "https://drive.google.com/file/d/1BJINn_a6vLZk2SHISlhUFO7JG3iKmhjw/view" }
       }),
       "3": createPrimaryClass("Class 3", {
         kannada: { name: "Kannada", code: "KAN", questionPaper: "https://drive.google.com/file/d/1hTVigRVaYkXBZqPubbP7hbAm0_54CYju/view?usp=drive_link", answerKey: "https://drive.google.com/file/d/1ynqAhr12lPjL75wH9WPNnz8ncSeaSZiv/view?usp=drive_link" },
@@ -124,6 +134,11 @@ window.NAMMA_TOPPERS_RESOURCES = {
         kannada: { name: "Kannada", code: "KAN", questionPaper: "https://drive.google.com/file/d/1zRY45ZMPQLtplmXNrugxcQXlZrDqECeX/view", answerKey: "https://drive.google.com/file/d/1qqEHtCdjJUNFtTFW54FgQVL04lpwlZAu/view" },
         evs: { name: "EVS", code: "EVS", questionPaper: "https://drive.google.com/file/d/1JJxearsjfttodfjuqWni4MtQkM8moZuM/view", answerKey: "https://drive.google.com/file/d/1PuGoksDpOAsvxzJ2UZ5rRppFRlzAE2Vd/view" },
         mathematics: { name: "Mathematics", code: "MATH", questionPaper: "https://drive.google.com/file/d/1VBFNv0HkJ2vJAbi4Sk7HZcttYuA4Pnfh/view", answerKey: "https://drive.google.com/file/d/1in9zJO3Y9SLBdlsMAkg27ATVFJ_N23V0/view" }
+      }, {
+        english: { name: "English", code: "ENG", pdfUrl: "https://drive.google.com/file/d/16xa2ON_ffJ2TzYMKHLJjoPijPmlOI3MI/view", questionPaper: "https://drive.google.com/file/d/16xa2ON_ffJ2TzYMKHLJjoPijPmlOI3MI/view", answerKey: "https://drive.google.com/file/d/16xa2ON_ffJ2TzYMKHLJjoPijPmlOI3MI/view" },
+        kannada: { name: "Kannada", code: "KAN", pdfUrl: "https://drive.google.com/file/d/1dapiRMX7hVTP3Lbs-0MTUtdQhOoKmYAw/view", questionPaper: "https://drive.google.com/file/d/1dapiRMX7hVTP3Lbs-0MTUtdQhOoKmYAw/view", answerKey: "https://drive.google.com/file/d/1dapiRMX7hVTP3Lbs-0MTUtdQhOoKmYAw/view" },
+        evs: { name: "EVS", code: "EVS", pdfUrl: "https://drive.google.com/file/d/18pArWGCQQ4SwKiUqE0bFxkBUx2-yURZJ/view", questionPaper: "https://drive.google.com/file/d/18pArWGCQQ4SwKiUqE0bFxkBUx2-yURZJ/view", answerKey: "https://drive.google.com/file/d/18pArWGCQQ4SwKiUqE0bFxkBUx2-yURZJ/view" },
+        mathematics: { name: "Mathematics", code: "MATH", pdfUrl: "https://drive.google.com/file/d/16Zd74r-SgBLyAiwwGxYVhIUGPERil73S/view", questionPaper: "https://drive.google.com/file/d/16Zd74r-SgBLyAiwwGxYVhIUGPERil73S/view", answerKey: "https://drive.google.com/file/d/16Zd74r-SgBLyAiwwGxYVhIUGPERil73S/view" }
       }),
       "4": createPrimaryClass("Class 4", {
         kannada: { name: "Kannada", code: "KAN", questionPaper: "https://drive.google.com/file/d/10NVkbI9rGdMrlM6R05f9L3K69jTbc6fp/view?usp=drive_link", answerKey: "https://drive.google.com/file/d/12k-JYtqIM_ZjD5xgqC3LIMr2slqT2idF/view?usp=drive_link" },
@@ -135,6 +150,11 @@ window.NAMMA_TOPPERS_RESOURCES = {
         kannada: { name: "Kannada", code: "KAN", questionPaper: "https://drive.google.com/file/d/1j4NnFy1GgkSRqp29vSG4YCw3pke91uS3/view", answerKey: "https://drive.google.com/file/d/1S_hLsgDE8k-zjU1HMSDkRWPjdMuOOLZ_/view" },
         evs: { name: "EVS", code: "EVS", questionPaper: "https://drive.google.com/file/d/18BKRfWQtbUHPc2ese4NSEMD-2hPO7a48/view", answerKey: "https://drive.google.com/file/d/1j0nlPkOiwzwEpocOxcYkb0p2hG1LWF2f/view" },
         mathematics: { name: "Mathematics", code: "MATH", questionPaper: "https://drive.google.com/file/d/11Ky9XV2nbm-7clIn91hJ7fBOO6yh7hCq/view", answerKey: "https://drive.google.com/file/d/1m9Ec5vG4JnUq77k_T6UwYeFpIi7OV2fd/view" }
+      }, {
+        english: { name: "English", code: "ENG", pdfUrl: "https://drive.google.com/file/d/12vpdMA2TE5DRuF-R3ZvzEyWqs0nVYFKW/view", questionPaper: "https://drive.google.com/file/d/12vpdMA2TE5DRuF-R3ZvzEyWqs0nVYFKW/view", answerKey: "https://drive.google.com/file/d/12vpdMA2TE5DRuF-R3ZvzEyWqs0nVYFKW/view" },
+        kannada: { name: "Kannada", code: "KAN", pdfUrl: "https://drive.google.com/file/d/1lnyNQoInzMuxfxsIVuvyhiMZJH9y3RNx/view", questionPaper: "https://drive.google.com/file/d/1lnyNQoInzMuxfxsIVuvyhiMZJH9y3RNx/view", answerKey: "https://drive.google.com/file/d/1lnyNQoInzMuxfxsIVuvyhiMZJH9y3RNx/view" },
+        evs: { name: "EVS", code: "EVS", pdfUrl: "https://drive.google.com/file/d/168eNN5IBb-NplmpPAAirWFvgTDSv_6YG/view", questionPaper: "https://drive.google.com/file/d/168eNN5IBb-NplmpPAAirWFvgTDSv_6YG/view", answerKey: "https://drive.google.com/file/d/168eNN5IBb-NplmpPAAirWFvgTDSv_6YG/view" },
+        mathematics: { name: "Mathematics", code: "MATH", pdfUrl: "https://drive.google.com/file/d/1oghbsHVZFXQrxgqrV2z-_iCikeMtapTx/view", questionPaper: "https://drive.google.com/file/d/1oghbsHVZFXQrxgqrV2z-_iCikeMtapTx/view", answerKey: "https://drive.google.com/file/d/1oghbsHVZFXQrxgqrV2z-_iCikeMtapTx/view" }
       }),
       "5": createPrimaryClass("Class 5", {
         kannada: { name: "Kannada", code: "KAN", questionPaper: "https://drive.google.com/file/d/1DpEpOWZSGuvy-6Y2HvGqj6rXixWHyOty/view?usp=drive_link", answerKey: "https://drive.google.com/file/d/1j3xTFxhxyimf5bCQx4nn8I13c4BUHyk7/view?usp=drive_link" },
@@ -146,6 +166,11 @@ window.NAMMA_TOPPERS_RESOURCES = {
         kannada: { name: "Kannada", code: "KAN", questionPaper: "https://drive.google.com/file/d/1vOmkjF03MRiehHWgy8Oz9Lyr4EeVI8jQ/view", answerKey: "https://drive.google.com/file/d/1Amjozjs2NBsmkF7xMXAxpZmRMhdriTtS/view" },
         evs: { name: "EVS", code: "EVS", questionPaper: "https://drive.google.com/file/d/1FtkLf2Lo8G4b34I8coUzbJnarwqLY8hZ/view", answerKey: "https://drive.google.com/file/d/1w9BVaSwghHM3j1sC1c9u2UcgpD10pD6n/view" },
         mathematics: { name: "Mathematics", code: "MATH", questionPaper: "https://drive.google.com/file/d/1cIiq24-GC0N6n1LPGeoEhpnm125DK_fa/view", answerKey: "https://drive.google.com/file/d/1jVEe7ibFibwWBgg8azuem1f6IUv3Tn1N/view" }
+      }, {
+        english: { name: "English", code: "ENG", pdfUrl: "https://drive.google.com/file/d/1tNqlhaXvZwa8YRWLb9IKO49tdd2NkulB/view", questionPaper: "https://drive.google.com/file/d/1tNqlhaXvZwa8YRWLb9IKO49tdd2NkulB/view", answerKey: "https://drive.google.com/file/d/1tNqlhaXvZwa8YRWLb9IKO49tdd2NkulB/view" },
+        kannada: { name: "Kannada", code: "KAN", pdfUrl: "https://drive.google.com/file/d/1cSZTWFeKCqVVsgbbprW-EUj_JWa_iDng/view", questionPaper: "https://drive.google.com/file/d/1cSZTWFeKCqVVsgbbprW-EUj_JWa_iDng/view", answerKey: "https://drive.google.com/file/d/1cSZTWFeKCqVVsgbbprW-EUj_JWa_iDng/view" },
+        evs: { name: "EVS", code: "EVS", pdfUrl: "https://drive.google.com/file/d/1h7UeQc59VhWnlUqWvwmmAEY84B5eZztL/view", questionPaper: "https://drive.google.com/file/d/1h7UeQc59VhWnlUqWvwmmAEY84B5eZztL/view", answerKey: "https://drive.google.com/file/d/1h7UeQc59VhWnlUqWvwmmAEY84B5eZztL/view" },
+        mathematics: { name: "Mathematics", code: "MATH", pdfUrl: "https://drive.google.com/file/d/1jYLZaLHWwXx3dhMxwUk9jr9m4kopcF2e/view", questionPaper: "https://drive.google.com/file/d/1jYLZaLHWwXx3dhMxwUk9jr9m4kopcF2e/view", answerKey: "https://drive.google.com/file/d/1jYLZaLHWwXx3dhMxwUk9jr9m4kopcF2e/view" }
       })
     }
   },
