@@ -54,12 +54,12 @@ function createPrimaryClass(name, fa1Config = null, fa2Config = null, sa1Config 
   };
 }
 
-function createHigherClass(name, fa1Config = null, fa2Config = null) {
+function createHigherClass(name, fa1Config = null, fa2Config = null, sa1Config = null) {
   return {
     name: name,
     fa1: fa1Config || JSON.parse(JSON.stringify(defaultHigherSubjects)),
     fa2: fa2Config || JSON.parse(JSON.stringify(defaultHigherSubjects)),
-    sa1: JSON.parse(JSON.stringify(defaultHigherSubjects)),
+    sa1: sa1Config || JSON.parse(JSON.stringify(defaultHigherSubjects)),
     sa2: JSON.parse(JSON.stringify(defaultHigherSubjects)),
     notes: JSON.parse(JSON.stringify(defaultHigherNotesSubjects)),
     unitTestModelQpsUrl: "/unit-test-model-question-papers/"
@@ -200,6 +200,13 @@ window.NAMMA_TOPPERS_RESOURCES = {
           mathematics: { name: "Mathematics", code: "MATH", questionPaper: "https://drive.google.com/file/d/1ZeW-niuxUC7Ch6d7YpOXdoh9jbPUhTEP/view", answerKey: "https://drive.google.com/file/d/1ykYlQRwasTNkiN6mTzdngXo2MO_eTKM4/view" },
           science: { name: "Science", code: "SCI", questionPaper: "https://drive.google.com/file/d/16mxtcMLtPMPrDCJpBS3njqzL3DMhZWaU/view", answerKey: "https://drive.google.com/file/d/1rT_1uisIuYeBEYQFF_JFhvnbQkhBNfxb/view" },
           socialScience: { name: "Social Science", code: "SS", questionPaper: "https://drive.google.com/file/d/10TmOSDKpRXsaSbaAqNkBbMgSneegtmhB/view", answerKey: "https://drive.google.com/file/d/1dNPNkJ6C9Yv1YtUCWZB6Tyq2vo6wTFRA/view" }
+        }, {
+          kannada: { name: "Kannada", code: "KAN", pdfUrl: "https://drive.google.com/file/d/1Op-O9-RpIcdx0hTWYrtEkJbSiQ_0D48l/view", questionPaper: "https://drive.google.com/file/d/1Op-O9-RpIcdx0hTWYrtEkJbSiQ_0D48l/view", answerKey: "https://drive.google.com/file/d/1Op-O9-RpIcdx0hTWYrtEkJbSiQ_0D48l/view" },
+          english: { name: "English", code: "ENG", pdfUrl: "https://drive.google.com/file/d/15e4hDjVsoUGCJiBTE0P1dbg0obpTvHrD/view", questionPaper: "https://drive.google.com/file/d/15e4hDjVsoUGCJiBTE0P1dbg0obpTvHrD/view", answerKey: "https://drive.google.com/file/d/15e4hDjVsoUGCJiBTE0P1dbg0obpTvHrD/view" },
+          hindi: { name: "Hindi", code: "HIN", pdfUrl: "https://drive.google.com/file/d/177CTwlh4mlDy0SruoN6RicpTfapOVcUk/view", questionPaper: "https://drive.google.com/file/d/177CTwlh4mlDy0SruoN6RicpTfapOVcUk/view", answerKey: "https://drive.google.com/file/d/177CTwlh4mlDy0SruoN6RicpTfapOVcUk/view" },
+          mathematics: { name: "Mathematics", code: "MATH", pdfUrl: "https://drive.google.com/file/d/17YUme4WSxteNY3XdYXLfsEZ-I6an_KOS/view", questionPaper: "https://drive.google.com/file/d/17YUme4WSxteNY3XdYXLfsEZ-I6an_KOS/view", answerKey: "https://drive.google.com/file/d/17YUme4WSxteNY3XdYXLfsEZ-I6an_KOS/view" },
+          science: { name: "Science", code: "SCI", pdfUrl: "https://drive.google.com/file/d/16HjL7UjYUW99hsq8BYgZsIsY0Gtl0Fz7/view", questionPaper: "https://drive.google.com/file/d/16HjL7UjYUW99hsq8BYgZsIsY0Gtl0Fz7/view", answerKey: "https://drive.google.com/file/d/16HjL7UjYUW99hsq8BYgZsIsY0Gtl0Fz7/view" },
+          socialScience: { name: "Social Science", code: "SS", pdfUrl: "https://drive.google.com/file/d/1T86G-Gtic_yh2EtWZ01PfjKwaEKisW7r/view", questionPaper: "https://drive.google.com/file/d/1T86G-Gtic_yh2EtWZ01PfjKwaEKisW7r/view", answerKey: "https://drive.google.com/file/d/1T86G-Gtic_yh2EtWZ01PfjKwaEKisW7r/view" }
         });
         c6.notesLandingUrl = "/kannada-medium/class-6/notes/";
         return c6;
@@ -218,6 +225,13 @@ window.NAMMA_TOPPERS_RESOURCES = {
         mathematics: { name: "Mathematics", code: "MATH", questionPaper: "https://drive.google.com/file/d/1bUxmcNOZtlempkAnftt-nCdxOCaGnKuh/view", answerKey: "https://drive.google.com/file/d/1lxD54f6M-gvBhfpTbbITNzheMLQyW4w1/view" },
         science: { name: "Science", code: "SCI", questionPaper: "https://drive.google.com/file/d/18TCrju2JDWuSI3iaSMkzaCxOnQXcbCC2/view", answerKey: "https://drive.google.com/file/d/15kxzeaH0AFwQ4Wu8OilB-ENUenu-SFsA/view" },
         socialScience: { name: "Social Science", code: "SS", questionPaper: "https://drive.google.com/file/d/1NnXgDa-NeQ92RZkaLj3bM--jS-3bGrIq/view", answerKey: "https://drive.google.com/file/d/1Wmvx32N8H_26ItE9ar_wMc5vhFAhdfA2/view" }
+      }, {
+        kannada: { name: "Kannada", code: "KAN", pdfUrl: "https://drive.google.com/file/d/1beErloKuR3iIPPRlLPe4e1Siz1GDQQms/view", questionPaper: "https://drive.google.com/file/d/1beErloKuR3iIPPRlLPe4e1Siz1GDQQms/view", answerKey: "https://drive.google.com/file/d/1beErloKuR3iIPPRlLPe4e1Siz1GDQQms/view" },
+        english: { name: "English", code: "ENG", pdfUrl: "https://drive.google.com/file/d/11XSc79Zloz9V9qDbZpCU7b4QxN8hbLH_/view", questionPaper: "https://drive.google.com/file/d/11XSc79Zloz9V9qDbZpCU7b4QxN8hbLH_/view", answerKey: "https://drive.google.com/file/d/11XSc79Zloz9V9qDbZpCU7b4QxN8hbLH_/view" },
+        hindi: { name: "Hindi", code: "HIN", pdfUrl: "https://drive.google.com/file/d/1xtkVaAp3VsnXsnRjj3pn08A-EYACtbjj/view", questionPaper: "https://drive.google.com/file/d/1xtkVaAp3VsnXsnRjj3pn08A-EYACtbjj/view", answerKey: "https://drive.google.com/file/d/1xtkVaAp3VsnXsnRjj3pn08A-EYACtbjj/view" },
+        mathematics: { name: "Mathematics", code: "MATH", pdfUrl: "https://drive.google.com/file/d/1c8PV_BA5H-6CiJXPE8qAm5rzCMo7c0yd/view", questionPaper: "https://drive.google.com/file/d/1c8PV_BA5H-6CiJXPE8qAm5rzCMo7c0yd/view", answerKey: "https://drive.google.com/file/d/1c8PV_BA5H-6CiJXPE8qAm5rzCMo7c0yd/view" },
+        science: { name: "Science", code: "SCI", pdfUrl: "https://drive.google.com/file/d/1Dq90zfSNDtXV5k4vc99PJga5QRZ1fniK/view", questionPaper: "https://drive.google.com/file/d/1Dq90zfSNDtXV5k4vc99PJga5QRZ1fniK/view", answerKey: "https://drive.google.com/file/d/1Dq90zfSNDtXV5k4vc99PJga5QRZ1fniK/view" },
+        socialScience: { name: "Social Science", code: "SS", pdfUrl: "https://drive.google.com/file/d/1VhRQjwI479FrbUbTcHv_oEfJFOZGE5g2/view", questionPaper: "https://drive.google.com/file/d/1VhRQjwI479FrbUbTcHv_oEfJFOZGE5g2/view", answerKey: "https://drive.google.com/file/d/1VhRQjwI479FrbUbTcHv_oEfJFOZGE5g2/view" }
       }),
       "8": createHigherClass("Class 8", {
         kannada: { name: "Kannada", code: "KAN", questionPaper: "https://drive.google.com/file/d/1Qx3x9ZEMblda6V_WDghXws7P-T5cwdjd/view?usp=drive_link", answerKey: "https://drive.google.com/file/d/13OVBATufPaAycXskB6CqJqoAegJhfYBP/view?usp=drive_link" },
